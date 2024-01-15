@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+	@State private var input:String = ""
+	
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+			HStack {
+				Image(systemName: "magnifyingglass.circle.fill")
+				TextField("Music, app, e-book...", text: $input)
+			}
+			Spacer()
         }
         .padding()
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
