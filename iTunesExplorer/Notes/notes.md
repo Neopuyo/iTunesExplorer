@@ -16,8 +16,8 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
  
 - [ ] penser à commit les étapes importantes
 - [ ] mettre en place le bouton
-- [ ] faire le model `ExploResult` [!] observable et cie
-- [ ] faire l'objet `Exploration` SANS **combine** [!] observable et cie
+- [ ] faire le model `ExploResult` [!] observable et cie *NOPE*
+- [ ] faire l'objet `Exploration` SANS **combine** [!] observable et cie *NOPE*
 - [ ] tester avec des print un fetch
 - [ ] Installer et utiliser instrumnt pour check ca : [doc apple](https://developer.apple.com/documentation/foundation/url_loading_system/analyzing_http_traffic_with_instruments)
 - [ ] **Git branch** integrer combine maintenant
@@ -25,6 +25,16 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [ ] Une fois le fetch ok -> affichage de la list des results + segmented controls pour category
 
 ## Strategie (at 42)
+
+### **Direct pour iTunesExplorer**
+
+- [ ] faire un logo png 1024
+- [ ] Etudier s'il faut une Scrollview avec lazyVstack au lieu de la List{} 
+- [ ] Voir si je trouve une methode sympa pour extraire l'alerte dans un fichier à part et rendre ça plus modulable **video kavsoft**
+- [ ] Etudier le cote cancel de la datatask machin, est-ce que c'est bien en place dans ma version ?
+- [ ] infos sur le @FocusState [Kodeco](https://www.kodeco.com/31569019-focus-management-in-swiftui-getting-started)
+
+### **Long Terme**
 
 - [ ] continuer de revoir les swiftUI app + sample App d'apple et les referencer dans jobiView
 

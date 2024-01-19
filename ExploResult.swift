@@ -17,7 +17,8 @@ class  ResultArray: Codable {
 }
 
 /// macro observable ou protocole ??
-class ExploResult: Codable, CustomStringConvertible {
+class ExploResult: Codable, CustomStringConvertible, Identifiable {
+	let id = UUID()
 	var artistName: String? = ""
 	var trackName: String? = ""
 	var kind: String? = ""
