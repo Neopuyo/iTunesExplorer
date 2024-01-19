@@ -30,11 +30,13 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 ### **Direct pour iTunesExplorer**
 
 - [ ] faire un logo png 1024
-- [ ] Etudier s'il faut une Scrollview avec lazyVstack au lieu de la List{} 
+- [X] Etudier s'il faut une Scrollview avec lazyVstack au lieu de la List{} 
+- [ ] Noter dans jobiView diff entre @unkown default et default dans un switch + clipShape et overlay !!
 - [ ] Considérer faire une extension de Image ou AsyncImage pour avoir directment dans la vignette des row
 - [ ] Voir si je trouve une methode sympa pour extraire l'alerte dans un fichier à part et rendre ça plus modulable **video kavsoft**
 - [ ] Etudier le cote cancel de la datatask machin, est-ce que c'est bien en place dans ma version ?
 - [ ] infos sur le @FocusState [Kodeco](https://www.kodeco.com/31569019-focus-management-in-swiftui-getting-started)
+- [ ] pour cntinuer ma DetailView -> comment avoir transparant + geoReader ?
 
 ### **Long Terme**
 

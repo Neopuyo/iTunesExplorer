@@ -13,25 +13,38 @@ struct RowExploResultView: View {
 	
     var body: some View {
 		HStack {
-			AsyncImage(url: URL(string: exploResult.imageSmall)) { phase in
-				if let image = phase.image {
+			AsyncImage(url: URL(string: exploResult.imageSmall), transaction: Transaction(animation: .easeOut)) { phase in
+				switch phase {
+				case .empty:
+					ProgressView()
+				case .success(let image):
 					image
 						.resizable()
 						.scaledToFill()
-				} else if phase.error != nil {
+						.transition(.scale(scale: 0.75, anchor: .center))
+				case .failure(_):
 					Image(systemName: "x.square.fill")
 						.font(.headline)
-				} else {
-					ProgressView()
+				@unknown default:
+					EmptyView()
 				}
 			}
 			.frame(width: 40, height: 40)
-			.background(Color.gray)
-			.clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 1.25)))
-			Text(exploResult.name)
-				.font(.caption)
-				.lineLimit(1)
-				.truncationMode(.tail)
+			.cornerRadius(8.0)
+			.overlay(
+				RoundedRectangle(cornerRadius: 8.0)
+					.stroke(Color.gray, lineWidth: 0.5)
+			)
+			VStack(alignment: .leading) {
+				Text(exploResult.name)
+					.font(.body)
+					
+				Text(!exploResult.artist.isEmpty ? String(format: "%@ (%@)", exploResult.artist, exploResult.type) : "Unknown")
+					.font(.caption)
+					.foregroundStyle(Color("Grey50"))
+			}
+			.lineLimit(1)
+			.truncationMode(.tail)
 		}
     }
 }

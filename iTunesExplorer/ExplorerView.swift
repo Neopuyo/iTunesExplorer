@@ -10,6 +10,7 @@ import SwiftUI
 struct ExplorerView: View {
 	@State private var exploResults = [ExploResult]()
 	@State private var showingAlert = false
+	@State private var isPresentingDetailView = false
 	@FocusState private var exploFieldFocused: Bool
 	@State private var exploFieldInput:String = ""
 	
@@ -40,6 +41,12 @@ struct ExplorerView: View {
 				LazyVStack(alignment: .leading){
 					ForEach(exploResults) { exploResult in
 						RowExploResultView(exploResult: exploResult)
+							.onTapGesture {
+								isPresentingDetailView = true
+							}
+							.sheet(isPresented:$isPresentingDetailView) {
+								DetailExploResultView(isPresenting: $isPresentingDetailView, exploResult: exploResult)
+							}
 					}
 				}
 			}
