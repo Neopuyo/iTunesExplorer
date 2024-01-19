@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExplorerView: View {
-	@State private var exploResult = [ExploResult]()
+	@State private var exploResults = [ExploResult]()
 	@State private var showingAlert = false
 	@FocusState private var exploFieldFocused: Bool
 	@State private var exploFieldInput:String = ""
@@ -36,12 +36,13 @@ struct ExplorerView: View {
 					Text("Please, check your network settings and retry.")
 				}
 			}
-			List {
-				ForEach(exploResult) { result in
-					Text(result.name)
+			ScrollView {
+				LazyVStack(alignment: .leading){
+					ForEach(exploResults) { exploResult in
+						RowExploResultView(exploResult: exploResult)
+					}
 				}
 			}
-			.cornerRadius(10.0)
           }
         .padding()
 		.onAppear() {
@@ -57,7 +58,7 @@ struct ExplorerView: View {
 					showingAlert = true
 				} else {
 					if case .results(let list) = explo.state {
-						exploResult = list
+						exploResults = list
 					}
 				}
 				exploFieldFocused = false

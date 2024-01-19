@@ -71,6 +71,7 @@ class Explo {
 		let url = iTunesURL(searchText: text, category: category)
 		print("URL : \(url)")
 		let session = URLSession.shared
+		session.sessionDescription = "Main Shared Session"
 		
 		dataTask = session.dataTask(with: url) { data, response, error in
 			var newState = State.notSearchedYet /// using a temp state because secondary thread
