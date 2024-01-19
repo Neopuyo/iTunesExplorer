@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D62D6122B5A3C3800E48218 /* Explo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62D6102B5A3C3700E48218 /* Explo.swift */; };
+		1D62D6132B5A3C3800E48218 /* ExploResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62D6112B5A3C3700E48218 /* ExploResult.swift */; };
+		1D62D6162B5A3C4400E48218 /* notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D62D6152B5A3C4400E48218 /* notes.md */; };
 		1DEDAE7D2B557968009E7F22 /* iTunesExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEDAE7C2B557968009E7F22 /* iTunesExplorerApp.swift */; };
-		1DEDAE7F2B557968009E7F22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEDAE7E2B557968009E7F22 /* ContentView.swift */; };
+		1DEDAE7F2B557968009E7F22 /* ExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEDAE7E2B557968009E7F22 /* ExplorerView.swift */; };
 		1DEDAE812B55796B009E7F22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DEDAE802B55796B009E7F22 /* Assets.xcassets */; };
 		1DEDAE842B55796B009E7F22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DEDAE832B55796B009E7F22 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D62D6102B5A3C3700E48218 /* Explo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explo.swift; sourceTree = SOURCE_ROOT; };
+		1D62D6112B5A3C3700E48218 /* ExploResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploResult.swift; sourceTree = SOURCE_ROOT; };
+		1D62D6152B5A3C4400E48218 /* notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = notes.md; sourceTree = "<group>"; };
 		1DEDAE792B557968009E7F22 /* iTunesExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DEDAE7C2B557968009E7F22 /* iTunesExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesExplorerApp.swift; sourceTree = "<group>"; };
-		1DEDAE7E2B557968009E7F22 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1DEDAE7E2B557968009E7F22 /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
 		1DEDAE802B55796B009E7F22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DEDAE832B55796B009E7F22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1DEDAE8A2B557B2F009E7F22 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -33,6 +39,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D4097EC2B5A39CF0044B609 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1D62D6102B5A3C3700E48218 /* Explo.swift */,
+				1D62D6112B5A3C3700E48218 /* ExploResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1D62D6142B5A3C4400E48218 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				1D62D6152B5A3C4400E48218 /* notes.md */,
+			);
+			name = Notes;
+			path = iTunesExplorer/Notes;
+			sourceTree = SOURCE_ROOT;
+		};
 		1DEDAE702B557968009E7F22 = {
 			isa = PBXGroup;
 			children = (
@@ -53,9 +77,11 @@
 		1DEDAE7B2B557968009E7F22 /* iTunesExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				1D4097EC2B5A39CF0044B609 /* Models */,
 				1DEDAE7C2B557968009E7F22 /* iTunesExplorerApp.swift */,
-				1DEDAE7E2B557968009E7F22 /* ContentView.swift */,
+				1DEDAE7E2B557968009E7F22 /* ExplorerView.swift */,
 				1DEDAE802B55796B009E7F22 /* Assets.xcassets */,
+				1D62D6142B5A3C4400E48218 /* Notes */,
 				1DEDAE822B55796B009E7F22 /* Preview Content */,
 			);
 			path = iTunesExplorer;
@@ -128,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DEDAE842B55796B009E7F22 /* Preview Assets.xcassets in Resources */,
+				1D62D6162B5A3C4400E48218 /* notes.md in Resources */,
 				1DEDAE812B55796B009E7F22 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,8 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DEDAE7F2B557968009E7F22 /* ContentView.swift in Sources */,
+				1DEDAE7F2B557968009E7F22 /* ExplorerView.swift in Sources */,
+				1D62D6122B5A3C3800E48218 /* Explo.swift in Sources */,
 				1DEDAE7D2B557968009E7F22 /* iTunesExplorerApp.swift in Sources */,
+				1D62D6132B5A3C3800E48218 /* ExploResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

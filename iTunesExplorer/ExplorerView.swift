@@ -7,14 +7,37 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ExplorerView: View {
 	@State private var input:String = ""
+	@StateObject private var explo = Explo()
 	
     var body: some View {
         VStack {
 			HStack {
 				Image(systemName: "magnifyingglass.circle.fill")
 				TextField("Music, app, e-book...", text: $input)
+				Button(action: {
+
+					withAnimation {
+						explo.performExplo(for: input, category: Explo.Category.all) { success in
+							if !success {
+								// TODO show error network alert
+							} else {
+								if case .results(let list) = explo.state {
+									for item in list {
+										print ("item = \(item)")
+									}
+								}
+							}
+						}
+					}
+
+				}) {
+					Image(systemName: "plus.circle.fill")
+
+				}
+				.disabled(input.isEmpty)
+				
 			}
 			Spacer()
         }
@@ -84,5 +107,5 @@ struct ContentView: View {
 */
 
 //#Preview {
-//    ContentView()
+//    ExplorerView()
 //}

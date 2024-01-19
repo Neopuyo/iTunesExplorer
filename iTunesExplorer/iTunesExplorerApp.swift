@@ -11,7 +11,7 @@ import SwiftUI
 struct iTunesExplorerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ExplorerView()
         }
     }
 }

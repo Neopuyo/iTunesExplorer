@@ -14,7 +14,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 
 ## Strategie (at home)
  
-- [ ] penser a commit les etapes importante
+- [ ] penser à commit les étapes importantes
 - [ ] mettre en place le bouton
 - [ ] faire le model `ExploResult` [!] observable et cie
 - [ ] faire l'objet `Exploration` SANS **combine** [!] observable et cie

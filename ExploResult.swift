@@ -17,7 +17,7 @@ class  ResultArray: Codable {
 }
 
 /// macro observable ou protocole ??
-class ExploResult {
+class ExploResult: Codable, CustomStringConvertible {
 	var artistName: String? = ""
 	var trackName: String? = ""
 	var kind: String? = ""
@@ -46,9 +46,9 @@ class ExploResult {
 
 /// [!] besoin ?
 /// operator overloading (swift programming book use static method vs global func outside class scope from other web sources)
-	// static func < (lhs: SearchResult, rhs: SearchResult) -> Bool {
-	// 	return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
-	// }
+	 static func < (lhs: ExploResult, rhs: ExploResult) -> Bool {
+	 	return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
+	 }
 
     var name: String {
 		return trackName ?? collectionName ?? ""
