@@ -12,16 +12,17 @@ struct DetailExploResultView: View {
 	let exploResult: ExploResult
 	
 	
-    var body: some View {
+	var body: some View {
 		VStack(alignment: .center) {
 			Button {
 				isPresenting = false
 			} label: {
 				Image(systemName: "x.circle.fill")
 			}
+			Text(exploResult.name)
 		}
-		Text(exploResult.name)
-    }
+	}
+	
 }
 
 //#Preview {

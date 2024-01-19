@@ -46,6 +46,7 @@ struct ExplorerView: View {
 							}
 							.sheet(isPresented:$isPresentingDetailView) {
 								DetailExploResultView(isPresenting: $isPresentingDetailView, exploResult: exploResult)
+									.background(BackgroundBlurView())
 							}
 					}
 				}
@@ -56,6 +57,8 @@ struct ExplorerView: View {
 			focusTextFieldOnAppear()
 		}
     }
+	
+
 	
 	// - MARK: Private Methods
 	private func processingExplo() {

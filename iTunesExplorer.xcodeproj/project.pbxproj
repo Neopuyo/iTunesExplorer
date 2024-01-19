@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D506F052B5ADBE900955288 /* BlurModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D506F042B5ADBE900955288 /* BlurModifier.swift */; };
 		1D62D6122B5A3C3800E48218 /* Explo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62D6102B5A3C3700E48218 /* Explo.swift */; };
 		1D62D6132B5A3C3800E48218 /* ExploResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62D6112B5A3C3700E48218 /* ExploResult.swift */; };
 		1D62D6162B5A3C4400E48218 /* notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D62D6152B5A3C4400E48218 /* notes.md */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D506F042B5ADBE900955288 /* BlurModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurModifier.swift; sourceTree = "<group>"; };
 		1D62D6102B5A3C3700E48218 /* Explo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explo.swift; sourceTree = SOURCE_ROOT; };
 		1D62D6112B5A3C3700E48218 /* ExploResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploResult.swift; sourceTree = SOURCE_ROOT; };
 		1D62D6152B5A3C4400E48218 /* notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = notes.md; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		1D506F032B5ADBBB00955288 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				1D506F042B5ADBE900955288 /* BlurModifier.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
 		1D62D6142B5A3C4400E48218 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +91,7 @@
 		1DEDAE7B2B557968009E7F22 /* iTunesExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				1D506F032B5ADBBB00955288 /* Add */,
 				1D4097EC2B5A39CF0044B609 /* Models */,
 				1DEDAE7C2B557968009E7F22 /* iTunesExplorerApp.swift */,
 				1DEDAE7E2B557968009E7F22 /* ExplorerView.swift */,
@@ -173,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DDDE24B2B5AA7DE001E5A98 /* RowExploResultView.swift in Sources */,
+				1D506F052B5ADBE900955288 /* BlurModifier.swift in Sources */,
 				1DEDAE7F2B557968009E7F22 /* ExplorerView.swift in Sources */,
 				1D62D6122B5A3C3800E48218 /* Explo.swift in Sources */,
 				1DDDE24D2B5AC86D001E5A98 /* DetailExploResultView.swift in Sources */,

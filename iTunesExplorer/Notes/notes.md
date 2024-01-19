@@ -37,6 +37,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [ ] Etudier le cote cancel de la datatask machin, est-ce que c'est bien en place dans ma version ?
 - [ ] infos sur le @FocusState [Kodeco](https://www.kodeco.com/31569019-focus-management-in-swiftui-getting-started)
 - [ ] pour cntinuer ma DetailView -> comment avoir transparant + geoReader ?
+- [ ] si le blur effect fonctionne bien : voir si je peux en faire une lib avec SPM
 
 ### **Long Terme**
 
