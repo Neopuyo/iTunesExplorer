@@ -19,25 +19,31 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [X] faire le model `ExploResult` [!] observable et cie *NOPE*
 - [X] faire l'objet `Exploration` SANS **combine** [!] observable et cie *NOPE*
 - [X] tester avec des print un fetch
-- [ ] Installer et utiliser instrumnt pour check ca : [doc apple](https://developer.apple.com/documentation/foundation/url_loading_system/analyzing_http_traffic_with_instruments)
+- [X] Installer et utiliser instrumnt pour check ca : [doc apple](https://developer.apple.com/documentation/foundation/url_loading_system/analyzing_http_traffic_with_instruments)
+- [ ] Detail view a finir de mettre en forme (contenu + gerer espace autours)
 - [ ] Peaufiner un peu la scrollview + ajout du segmented control
+- [ ] une peu de color et design [background doc](https://developer.apple.com/documentation/swiftui/adding-a-background-to-your-view)
+- [ ] Faire une lib avec SPM -> github prive NeoTools 
+  - v1 blur (laisser le readme pour 42)
+  - v2 networkLayer combine (plus tard, une fois combine integré)
 - [ ] **Git branch** integrer combine maintenant
 - [ ] retester des fetch
 - [ ] Une fois le fetch ok -> affichage de la list des results + segmented controls pour category
+- [ ] Ajouter une page d'intro / un bouton avant d'afficher la searchbar avec une animation sympa comme [ceci](https://www.hackingwithswift.com/quick-start/swiftui/how-to-dynamically-adjust-the-appearance-of-a-view-based-on-its-size-and-location)
 
 ## Strategie (at 42)
 
 ### **Direct pour iTunesExplorer**
 
-- [ ] faire un logo png 1024
+- [X] faire un logo png 1024 ~> Placeholder 👎
 - [X] Etudier s'il faut une Scrollview avec lazyVstack au lieu de la List{} 
-- [ ] Noter dans jobiView diff entre @unkown default et default dans un switch + clipShape et overlay !!
-- [ ] Considérer faire une extension de Image ou AsyncImage pour avoir directment dans la vignette des row
-- [ ] Voir si je trouve une methode sympa pour extraire l'alerte dans un fichier à part et rendre ça plus modulable **video kavsoft**
-- [ ] Etudier le cote cancel de la datatask machin, est-ce que c'est bien en place dans ma version ?
-- [ ] infos sur le @FocusState [Kodeco](https://www.kodeco.com/31569019-focus-management-in-swiftui-getting-started)
-- [ ] pour cntinuer ma DetailView -> comment avoir transparant + geoReader ?
-- [ ] si le blur effect fonctionne bien : voir si je peux en faire une lib avec SPM
+- [X] Noter dans jobiView diff entre @unkown default et default dans un switch + clipShape et overlay !!
+- [X] Voir si je trouve une methode sympa pour extraire l'alerte dans un fichier à part et rendre ça plus modulable **video kavsoft**
+- [X] Etudier le cote cancel de la datatask machin, est-ce que c'est bien en place dans ma version ?
+- [X] infos sur le @FocusState [Kodeco](https://www.kodeco.com/31569019-focus-management-in-swiftui-getting-started)
+- [X] pour cntinuer ma DetailView -> comment avoir transparant + geoReader ?
+- [ ] s'occuper du readme du packageManager blur
+- [ ] continuer de voir le truc sur testView dans la partie jobiview structural pattern
 
 ### **Long Terme**
 
