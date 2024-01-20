@@ -21,6 +21,7 @@ struct DetailExploResultView: View {
 			}
 			Text(exploResult.name)
 		}
+        // TODO : gestion marge avec simple padding (interne/externe) ? Ou besoin geometryReader
 	}
 	
 }
