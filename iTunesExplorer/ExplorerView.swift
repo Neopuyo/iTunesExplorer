@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Neopuyo
 
 struct ExplorerView: View {
 	@State private var exploResults = [ExploResult]()
@@ -15,6 +16,8 @@ struct ExplorerView: View {
 	@State private var exploFieldInput:String = ""
 	
 	private var explo = Explo()
+	
+	private var testSPM = NeoTestEnum.success
 	
     var body: some View {
         VStack {
