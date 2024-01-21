@@ -43,6 +43,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [X] infos sur le @FocusState [Kodeco](https://www.kodeco.com/31569019-focus-management-in-swiftui-getting-started)
 - [X] pour cntinuer ma DetailView -> comment avoir transparant + geoReader ?
 - [ ] s'occuper du readme du packageManager blur
+- [ ] changer le nom plus explicite transparent puis tag patch 1.0.1 
 - [ ] continuer de voir le truc sur testView dans la partie jobiview structural pattern
 
 ### **Long Terme**
