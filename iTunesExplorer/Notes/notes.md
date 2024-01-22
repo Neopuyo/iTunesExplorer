@@ -23,7 +23,8 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [ ] Detail view a finir de mettre en forme (contenu + gerer espace autours)
 - [ ] Peaufiner un peu la scrollview + ajout du segmented control
 - [ ] une peu de color et design [background doc](https://developer.apple.com/documentation/swiftui/adding-a-background-to-your-view)
-- [ ] Faire une lib avec SPM -> github prive NeoTools 
+- [ ] **Commit ou newbranch** avant, puis tester de remplacer la scrollview avec list pour perfs
+- [X] Faire une lib avec SPM -> github prive NeoTools 
   - v1 blur (laisser le readme pour 42)
   - v2 networkLayer combine (plus tard, une fois combine integré)
 - [ ] **Git branch** integrer combine maintenant
@@ -42,13 +43,14 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [X] Etudier le cote cancel de la datatask machin, est-ce que c'est bien en place dans ma version ?
 - [X] infos sur le @FocusState [Kodeco](https://www.kodeco.com/31569019-focus-management-in-swiftui-getting-started)
 - [X] pour cntinuer ma DetailView -> comment avoir transparant + geoReader ?
-- [ ] s'occuper du readme du packageManager blur
-- [ ] changer le nom plus explicite transparent puis tag patch 1.0.1 
-- [ ] continuer de voir le truc sur testView dans la partie jobiview structural pattern
+- [X] s'occuper du readme du packageManager blur
+- [X] *changer le nom plus explicite transparent NOPE* puis tag patch 1.0.1 
 
 ### **Long Terme**
 
 - [ ] continuer de revoir les swiftUI app + sample App d'apple et les referencer dans jobiView
+- [ ] continuer de voir le truc sur testView dans la partie jobiview structural pattern
+- [ ] Extraire puis passer une partie de jobiView en repo public ?
 
 <br/>
 
