@@ -49,8 +49,8 @@ struct ExplorerView: View {
 							}
 							.sheet(isPresented:$isPresentingDetailView) {
 								GeometryReader { geo in
-									DetailExploResultView(isPresenting: $isPresentingDetailView, exploResult: exploResult, geo:geo)
-										.background(BackgroundBlurView())
+									DetailExploResultView(isPresenting: $isPresentingDetailView, exploResult: exploResult, geo: geo)
+										.background(TranslucidSheet())
 										.position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).midY - geo.size.height * 0.08)
 									
 								}

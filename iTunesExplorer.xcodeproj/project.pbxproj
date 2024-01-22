@@ -54,6 +54,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		1D5DCD202B5E9FCA0084CEBE /* Add */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
 		1D62D6142B5A3C4400E48218 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +90,7 @@
 		1DEDAE7B2B557968009E7F22 /* iTunesExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				1D5DCD202B5E9FCA0084CEBE /* Add */,
 				1D4097EC2B5A39CF0044B609 /* Models */,
 				1DEDAE7C2B557968009E7F22 /* iTunesExplorerApp.swift */,
 				1DEDAE7E2B557968009E7F22 /* ExplorerView.swift */,

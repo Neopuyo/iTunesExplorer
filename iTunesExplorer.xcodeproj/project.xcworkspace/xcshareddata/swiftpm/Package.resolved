@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "git@github.com:Neopuyo/Neopuyo.git",
       "state" : {
-        "revision" : "2e6a3fde20d7090ea71bc0d559c798a1459c9019",
-        "version" : "1.0.0"
+        "revision" : "9e1c4b2b00d442318da4a94dd307e172a394b707",
+        "version" : "1.0.2"
       }
     }
   ],
