@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "neopuyo",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:Neopuyo/Neopuyo.git",
+      "state" : {
+        "revision" : "2e6a3fde20d7090ea71bc0d559c798a1459c9019",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}

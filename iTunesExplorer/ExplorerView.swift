@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Neopuyo
 
 struct ExplorerView: View {
 	@State private var exploResults = [ExploResult]()
@@ -15,6 +16,8 @@ struct ExplorerView: View {
 	@State private var exploFieldInput:String = ""
 	
 	private var explo = Explo()
+	
+//	private var testSPM = NeoTestEnum.success
 	
     var body: some View {
         VStack {
@@ -45,8 +48,12 @@ struct ExplorerView: View {
 								isPresentingDetailView = true
 							}
 							.sheet(isPresented:$isPresentingDetailView) {
-								DetailExploResultView(isPresenting: $isPresentingDetailView, exploResult: exploResult)
-									.background(BackgroundBlurView())
+								GeometryReader { geo in
+									DetailExploResultView(isPresenting: $isPresentingDetailView, exploResult: exploResult, geo:geo)
+										.background(BackgroundBlurView())
+										.position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).midY - geo.size.height * 0.08)
+									
+								}
 							}
 					}
 				}
