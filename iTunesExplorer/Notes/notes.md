@@ -44,7 +44,9 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [X] infos sur le @FocusState [Kodeco](https://www.kodeco.com/31569019-focus-management-in-swiftui-getting-started)
 - [X] pour cntinuer ma DetailView -> comment avoir transparant + geoReader ?
 - [X] s'occuper du readme du packageManager blur
-- [X] *changer le nom plus explicite transparent NOPE* puis tag patch 1.0.1 
+- [X] *changer le nom plus explicite transparent NOPE* puis tag patch 1.0.1
+- [ ] >Detail retrouver comment formater le texte pour labels genre : genre ou plutot refaire deux Texte dans Hstack  ?
+ 
 
 ### **Long Terme**
 
