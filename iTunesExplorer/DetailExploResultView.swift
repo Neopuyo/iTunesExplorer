@@ -9,7 +9,7 @@ import SwiftUI
 import Neopuyo
 
 struct DetailExploResultView: View {
-	@Binding var isPresenting: Bool
+	@Environment(\.dismiss) private var dismiss
 	let exploResult: ExploResult
 	let geo: GeometryProxy
 	
@@ -17,7 +17,7 @@ struct DetailExploResultView: View {
 	var body: some View {
 		VStack(alignment: .center) {
 			Button {
-				isPresenting = false
+				dismiss()
 			} label: {
 				Image(systemName: "x.circle.fill")
 			}

@@ -11,13 +11,11 @@ import Neopuyo
 struct ExplorerView: View {
 	@State private var exploResults = [ExploResult]()
 	@State private var showingAlert = false
-	@State private var isPresentingDetailView = false
+	@State private var exploResultTargeted: ExploResult? = nil
 	@FocusState private var exploFieldFocused: Bool
 	@State private var exploFieldInput:String = ""
 	
 	private var explo = Explo()
-	
-//	private var testSPM = NeoTestEnum.success
 	
     var body: some View {
         VStack {
@@ -40,30 +38,28 @@ struct ExplorerView: View {
 					Text("Please, check your network settings and retry.")
 				}
 			}
-			ScrollView {
-				LazyVStack(alignment: .leading){
-					ForEach(exploResults) { exploResult in
-						RowExploResultView(exploResult: exploResult)
-							.onTapGesture {
-								isPresentingDetailView = true
-							}
-							.sheet(isPresented:$isPresentingDetailView) {
-								GeometryReader { geo in
-									DetailExploResultView(isPresenting: $isPresentingDetailView, exploResult: exploResult, geo: geo)
-										.background(TranslucidSheet())
-										.position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).midY - geo.size.height * 0.08)
-									
-								}
-							}
+			List(exploResults) { exploResult in
+				RowExploResultView(exploResult: exploResult)
+					.onTapGesture {
+						exploResultTargeted = exploResult
 					}
-				}
 			}
-          }
-        .padding()
+			.sheet(item: $exploResultTargeted, onDismiss: {
+				exploResultTargeted = nil
+			}, content: { exploResult in
+				GeometryReader { geo in
+					DetailExploResultView(exploResult: exploResult, geo: geo)
+						.background(TranslucidSheet())
+						.position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).midY - geo.size.height * 0.08)
+					
+				}
+			})
+		}
+		.padding()
 		.onAppear() {
 			focusTextFieldOnAppear()
 		}
-    }
+	}
 	
 
 	
@@ -91,67 +87,7 @@ struct ExplorerView: View {
 		}
 	}
 }
-
-// - MARK: to use textfield with button
-/*
-    start from : https://developer.apple.com/tutorials/app-dev-training/creating-the-edit-view
-
-      HStack {
-
-                    TextField("New Attendee", text: $newAttendeeName)
-
-                    Button(action: {
-
-                        withAnimation {
-
-                            let attendee = DailyScrum.Attendee(name: newAttendeeName)
-
-                            scrum.attendees.append(attendee)
-
-                            newAttendeeName = ""
-
-                        }
-
-                    }) {
-
-                        Image(systemName: "plus.circle.fill")
-
-                    }
-
-                    .disabled(newAttendeeName.isEmpty)
-
-                }
-        
-        ----------------------------
-
-        vue modale :
-
-        @State private var isPresentingEditView = false
-
-        .sheet(isPresented: $isPresentingEditView) {
-
-            DetailEditView()
-
-        }
-
-        et (de HWS)
-
-        struct SheetView: View {
-            @Environment(\.dismiss) var dismiss
-
-            var body: some View {
-                Button("Press to dismiss") {
-                    dismiss()
-                }
-                .font(.title)
-                .padding()
-                .background(.black)
-            }
-        }
-
-        ---------------------------------
-
-*/
+    
 
 //#Preview {
 //    ExplorerView()
