@@ -37,6 +37,10 @@ struct DetailExploResultView: View {
 		.background(.ultraThinMaterial)
 		.cornerRadius(16)
 	}
+    /*
+    > utiliser  .foregroundStyle(.secondary) pour labels Type genre
+    > string interpolation de \(Text().for..) dans un text
+    */
 	
 	private func getPrice() -> String {
 		let formatter = NumberFormatter()
