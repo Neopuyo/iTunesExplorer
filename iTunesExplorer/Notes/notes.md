@@ -13,7 +13,9 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 ---
 
 ## Strategie (at home)
- 
+
+### **iTunesExplorer**
+
 - [ ] penser à commit les étapes importantes
 - [ ] mettre en place le bouton
 - [X] faire le model `ExploResult` [!] observable et cie *NOPE*
@@ -32,6 +34,12 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [ ] Une fois le fetch ok -> affichage de la list des results + segmented controls pour category
 - [ ] Ajouter une page d'intro / un bouton avant d'afficher la searchbar avec une animation sympa comme [ceci](https://www.hackingwithswift.com/quick-start/swiftui/how-to-dynamically-adjust-the-appearance-of-a-view-based-on-its-size-and-location)
 
+### **Neopuyo personnal Library**
+
+- [ ] créer de la Doc avec DocC
+
+---
+
 ## Strategie (at 42)
 
 ### **Direct pour iTunesExplorer**
@@ -45,8 +53,12 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [X] pour cntinuer ma DetailView -> comment avoir transparant + geoReader ?
 - [X] s'occuper du readme du packageManager blur
 - [X] *changer le nom plus explicite transparent NOPE* puis tag patch 1.0.1
-- [ ] >Detail retrouver comment formater le texte pour labels genre : genre ou plutot refaire deux Texte dans Hstack  ?
- 
+- [ ] > **DetailView** retrouver comment formater le texte pour labels genre : genre ou plutot refaire deux Texte dans Hstack  ?
+- [ ] > **JobiView** se documenter + faire un paragraphe sur :
+  - [X] Documenter ses fonctions dans Xcode
+  - [X] Accessibilité, voiceOver voiceControl + accessibilitylabel ect de ios17
+  - [ ] Logger
+  - [ ] Comment faire pour passer son tel en appareil de dév (+facile switcher maintenant)
 
 ### **Long Terme**
 
