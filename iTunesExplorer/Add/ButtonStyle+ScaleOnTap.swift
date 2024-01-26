@@ -12,9 +12,9 @@ struct ScaleOnTap: ButtonStyle {
 		configuration.label
 			.font(.headline)
 			.padding(8)
-			.background(Color.grey50)
+			.background(Color.accentColor)
 			.clipShape(Capsule())
-			.foregroundColor(Color.accentColor)
+			.foregroundColor(.secondary)
 			.scaleEffect(configuration.isPressed ? 1.2 : 1, anchor: .center)
 	}
 }

@@ -9,8 +9,7 @@ import SwiftUI
 //import Combine // [!] pour etape suivante
 
 
-// [?][!] observable object - macro ???
-class Explo {
+class Explo : ObservableObject {
 	typealias ExploComplete = (Bool) -> ()
 
 	enum Category: Int {
@@ -34,7 +33,7 @@ class Explo {
 		  case results([ExploResult])
 	}
 
-    private(set) var state: State = .notSearchedYet
+    @Published private(set) var state: State = .notSearchedYet
 	
 	private var dataTask: URLSessionDataTask?
 

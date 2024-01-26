@@ -67,6 +67,7 @@ struct DetailExploResultView: View {
 				.padding(.bottom, 20)
 				Text(exploResult.artistName ?? "unknown")
 					.foregroundColor(Color("AccentColor"))
+					.multilineTextAlignment(.center)
 				VStack(alignment: .leading, spacing:0) {
 					Label {
 						Text("Type")
@@ -107,12 +108,12 @@ struct DetailExploResultView: View {
 				.buttonStyle(ScaleOnTap())
 				.padding(.horizontal)
 				.frame(maxWidth: .infinity, alignment: .trailing)
-				
 			}
 		}
 		.frame(maxWidth: geo.size.width * 0.65)
 		.padding()
 		.background(.ultraThinMaterial)
+		.background(Color.accentColor.opacity(0.35))
 		.cornerRadius(16)
 	}
 	
