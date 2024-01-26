@@ -38,10 +38,13 @@ struct RowExploResultView: View {
 			VStack(alignment: .leading) {
 				Text(exploResult.name)
 					.font(.body)
-					
-				Text(!exploResult.artist.isEmpty ? String(format: "%@ (%@)", exploResult.artist, exploResult.type) : "Unknown")
-					.font(.caption)
-					.foregroundStyle(Color("Grey50"))
+				HStack(spacing: 8.0) {
+					Text(!exploResult.artist.isEmpty ? exploResult.artist : "Unknown")
+					Text(!exploResult.artist.isEmpty ? exploResult.type : "")
+						.fontWeight(.light)
+				}
+				.font(.caption)
+				.foregroundStyle(Color("Grey50"))
 			}
 			.lineLimit(1)
 			.truncationMode(.tail)

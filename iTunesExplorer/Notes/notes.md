@@ -57,8 +57,13 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [ ] > **JobiView** se documenter + faire un paragraphe sur :
   - [X] Documenter ses fonctions dans Xcode
   - [X] Accessibilité, voiceOver voiceControl + accessibilitylabel ect de ios17
+<<<<<<< HEAD
   - [ ] ... il y avait deux autres topic --- ça me reviendra
   - [ ] ... noter direct next time 😲
+=======
+  - [ ] Logger
+  - [ ] Comment faire pour passer son tel en appareil de dév (+facile switcher maintenant)
+>>>>>>> main
 
 ### **Long Terme**
 

@@ -11,6 +11,7 @@
 		1D62D6122B5A3C3800E48218 /* Explo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62D6102B5A3C3700E48218 /* Explo.swift */; };
 		1D62D6132B5A3C3800E48218 /* ExploResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62D6112B5A3C3700E48218 /* ExploResult.swift */; };
 		1D62D6162B5A3C4400E48218 /* notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D62D6152B5A3C4400E48218 /* notes.md */; };
+		1DA0E32A2B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA0E3292B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift */; };
 		1DDDE24B2B5AA7DE001E5A98 /* RowExploResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDE24A2B5AA7DE001E5A98 /* RowExploResultView.swift */; };
 		1DDDE24D2B5AC86D001E5A98 /* DetailExploResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDE24C2B5AC86D001E5A98 /* DetailExploResultView.swift */; };
 		1DEDAE7D2B557968009E7F22 /* iTunesExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEDAE7C2B557968009E7F22 /* iTunesExplorerApp.swift */; };
@@ -23,6 +24,7 @@
 		1D62D6102B5A3C3700E48218 /* Explo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explo.swift; sourceTree = SOURCE_ROOT; };
 		1D62D6112B5A3C3700E48218 /* ExploResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploResult.swift; sourceTree = SOURCE_ROOT; };
 		1D62D6152B5A3C4400E48218 /* notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = notes.md; sourceTree = "<group>"; };
+		1DA0E3292B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+ScaleOnTap.swift"; sourceTree = "<group>"; };
 		1DDDE24A2B5AA7DE001E5A98 /* RowExploResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowExploResultView.swift; sourceTree = "<group>"; };
 		1DDDE24C2B5AC86D001E5A98 /* DetailExploResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailExploResultView.swift; sourceTree = "<group>"; };
 		1DEDAE792B557968009E7F22 /* iTunesExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,7 @@
 		1D5DCD202B5E9FCA0084CEBE /* Add */ = {
 			isa = PBXGroup;
 			children = (
+				1DA0E3292B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DA0E32A2B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift in Sources */,
 				1DDDE24B2B5AA7DE001E5A98 /* RowExploResultView.swift in Sources */,
 				1DEDAE7F2B557968009E7F22 /* ExplorerView.swift in Sources */,
 				1D62D6122B5A3C3800E48218 /* Explo.swift in Sources */,
