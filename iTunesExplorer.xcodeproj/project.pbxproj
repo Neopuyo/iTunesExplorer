@@ -13,8 +13,9 @@
 		1D62D6162B5A3C4400E48218 /* notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D62D6152B5A3C4400E48218 /* notes.md */; };
 		1DA0E32A2B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA0E3292B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift */; };
 		1DA0E32D2B63E93700CF4F8C /* ListExploResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA0E32C2B63E93700CF4F8C /* ListExploResultView.swift */; };
+		1DA0E32F2B63FB7300CF4F8C /* OSLog+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA0E32E2B63FB7300CF4F8C /* OSLog+Custom.swift */; };
 		1DDDE24B2B5AA7DE001E5A98 /* RowExploResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDE24A2B5AA7DE001E5A98 /* RowExploResultView.swift */; };
-		1DDDE24D2B5AC86D001E5A98 /*  DetailExploResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDE24C2B5AC86D001E5A98 /*  DetailExploResultView.swift */; };
+		1DDDE24D2B5AC86D001E5A98 /* DetailExploResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDE24C2B5AC86D001E5A98 /* DetailExploResultView.swift */; };
 		1DEDAE7D2B557968009E7F22 /* iTunesExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEDAE7C2B557968009E7F22 /* iTunesExplorerApp.swift */; };
 		1DEDAE7F2B557968009E7F22 /* ExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEDAE7E2B557968009E7F22 /* ExplorerView.swift */; };
 		1DEDAE812B55796B009E7F22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DEDAE802B55796B009E7F22 /* Assets.xcassets */; };
@@ -27,8 +28,9 @@
 		1D62D6152B5A3C4400E48218 /* notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = notes.md; sourceTree = "<group>"; };
 		1DA0E3292B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+ScaleOnTap.swift"; sourceTree = "<group>"; };
 		1DA0E32C2B63E93700CF4F8C /* ListExploResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExploResultView.swift; sourceTree = "<group>"; };
+		1DA0E32E2B63FB7300CF4F8C /* OSLog+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Custom.swift"; sourceTree = "<group>"; };
 		1DDDE24A2B5AA7DE001E5A98 /* RowExploResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowExploResultView.swift; sourceTree = "<group>"; };
-		1DDDE24C2B5AC86D001E5A98 /*  DetailExploResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " DetailExploResultView.swift"; sourceTree = "<group>"; };
+		1DDDE24C2B5AC86D001E5A98 /* DetailExploResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailExploResultView.swift; sourceTree = "<group>"; };
 		1DEDAE792B557968009E7F22 /* iTunesExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DEDAE7C2B557968009E7F22 /* iTunesExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesExplorerApp.swift; sourceTree = "<group>"; };
 		1DEDAE7E2B557968009E7F22 /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				1DA0E3292B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift */,
+				1DA0E32E2B63FB7300CF4F8C /* OSLog+Custom.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -80,7 +83,7 @@
 			children = (
 				1DEDAE7E2B557968009E7F22 /* ExplorerView.swift */,
 				1DA0E32C2B63E93700CF4F8C /* ListExploResultView.swift */,
-				1DDDE24C2B5AC86D001E5A98 /*  DetailExploResultView.swift */,
+				1DDDE24C2B5AC86D001E5A98 /* DetailExploResultView.swift */,
 				1DDDE24A2B5AA7DE001E5A98 /* RowExploResultView.swift */,
 			);
 			path = ExplorerViews;
@@ -202,12 +205,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DA0E32F2B63FB7300CF4F8C /* OSLog+Custom.swift in Sources */,
 				1DA0E32A2B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift in Sources */,
 				1DDDE24B2B5AA7DE001E5A98 /* RowExploResultView.swift in Sources */,
 				1DA0E32D2B63E93700CF4F8C /* ListExploResultView.swift in Sources */,
 				1DEDAE7F2B557968009E7F22 /* ExplorerView.swift in Sources */,
 				1D62D6122B5A3C3800E48218 /* Explo.swift in Sources */,
-				1DDDE24D2B5AC86D001E5A98 /*  DetailExploResultView.swift in Sources */,
+				1DDDE24D2B5AC86D001E5A98 /* DetailExploResultView.swift in Sources */,
 				1DEDAE7D2B557968009E7F22 /* iTunesExplorerApp.swift in Sources */,
 				1D62D6132B5A3C3800E48218 /* ExploResult.swift in Sources */,
 			);

@@ -8,16 +8,14 @@
 import Foundation
 
 
-
-/// macro observable ou protocole ou rien ??
 /// [!] valider son utilité finale -> a voir + tard : aller direct a valeur voulue avec combine ?
-class  ResultArray: Codable {
+final class  ResultArray: Codable {
     var resultCount = 0
     var results = [ExploResult]()
 }
 
-/// macro observable ou protocole ??
-class ExploResult: Codable, CustomStringConvertible, Identifiable {
+final class ExploResult: Codable, CustomStringConvertible, Identifiable, Equatable {
+	
 	let id = UUID()
 	var artistName: String? = ""
 	var trackName: String? = ""
@@ -50,7 +48,12 @@ class ExploResult: Codable, CustomStringConvertible, Identifiable {
 	 static func < (lhs: ExploResult, rhs: ExploResult) -> Bool {
 	 	return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
 	 }
-
+	
+	// Equatable requirement
+	static func == (lhs: ExploResult, rhs: ExploResult) -> Bool {
+		return lhs.id == rhs.id
+	}
+	
     var name: String {
 		return trackName ?? collectionName ?? ""
 	}

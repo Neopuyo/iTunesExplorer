@@ -10,11 +10,15 @@ import SwiftUI
 struct ExplorerView: View {
 	@State private var exploResults = [ExploResult]()
 	@State private var showingAlert = false
-//	@State private var exploResultTargeted: ExploResult? = nil
 	@FocusState private var exploFieldFocused: Bool
 	@State private var exploFieldInput:String = ""
+	@State private var segmentedControlTag = 0
 	
 	@StateObject private var explo = Explo()
+	
+	var canClear: Bool {
+		explo.state != .notSearchedYet
+	}
 	
     var body: some View {
 		ZStack {
@@ -28,11 +32,19 @@ struct ExplorerView: View {
 						.submitLabel(.search)
 						.disableAutocorrection(true)
 						.focused($exploFieldFocused)
-						.onSubmit { processingExplo() }
+						.onSubmit { processingExplo(categoryTag: segmentedControlTag) }
 					Button {
-						processingExplo()
+						if canClear {
+							exploFieldInput = ""
+							exploFieldFocused = true
+							explo.cancel()
+						} else {
+							processingExplo(categoryTag: segmentedControlTag)
+						}
 					} label: {
 						Image(systemName: "plus.circle.fill")
+							.animation(.easeInOut, value: canClear)
+							.rotationEffect(Angle(degrees: canClear ? 45.0 : 0))
 					}
 					.disabled(exploFieldInput.isEmpty)
 					.alert("Network Issue", isPresented: $showingAlert) {
@@ -42,6 +54,17 @@ struct ExplorerView: View {
 					}
 				}
 				.padding(.bottom, 12)
+				
+				Picker("Explo search filter", selection: $segmentedControlTag) {
+					Text("All").tag(0)
+					Text("Music").tag(1)
+					Text("Apps").tag(2)
+					Text("E-book").tag(3)
+				}.pickerStyle(.segmented)
+					.onChange(of: segmentedControlTag) { tag in
+						processingExplo(categoryTag: tag)
+					}
+				
 				switchExploState()
 					.frame(maxHeight: .infinity, alignment: .top)
 			}
@@ -59,13 +82,13 @@ struct ExplorerView: View {
 		VStack(spacing: 0) {
 			switch explo.state {
 			case .notSearchedYet:
-				// TODO : welcome user with picture&Text, button to focus on textField + logoapp icon
+				// - TODO: welcome user with picture&Text, button to focus on textField + logoapp icon
 				Text("Not Searched Yet")
 					.font(.footnote)
 					.foregroundStyle(Color.accentColor.opacity(0.5))
 			case .loading:
 				 ProgressView {
-					// TODO : animate text with moving gradient inside typo
+					// - TODO: animate text with moving gradient inside typo
 					Text("Exploring")
 						 .font(.caption)
 						 .foregroundStyle(Color.accentColor.opacity(0.5))
@@ -85,9 +108,13 @@ struct ExplorerView: View {
 		}
 	}
 	
-	private func processingExplo() {
+	private func processingExplo(categoryTag: Int) {
+		guard let category = Explo.Category(rawValue: categoryTag) else {
+			print("Error segmented control - tag = \(categoryTag)")
+			return
+		}
 		withAnimation {
-			explo.performExplo(for: exploFieldInput, category: Explo.Category.all) { success in
+			explo.performExplo(for: exploFieldInput, category: category) { success in
 				if !success {
 					showingAlert = true
 				} else {
@@ -96,7 +123,7 @@ struct ExplorerView: View {
 					}
 				}
 				exploFieldFocused = false
-				exploFieldInput = ""
+//				exploFieldInput = ""
 			}
 		}
 	}

@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import OSLog
 //import Combine // [!] pour etape suivante
 
 
-class Explo : ObservableObject {
+final class Explo : ObservableObject {
 	typealias ExploComplete = (Bool) -> ()
-
+	
 	enum Category: Int {
 		case all = 0
 		case music, software, ebooks
@@ -26,7 +27,29 @@ class Explo : ObservableObject {
 		}
 	}
 	
-	enum State {
+	enum State: Equatable {
+		static func == (lhs: Explo.State, rhs: Explo.State) -> Bool {
+			switch (lhs, rhs) {
+				
+			case (.notSearchedYet, .notSearchedYet):
+				return true
+			case (.loading, .loading):
+				return true
+			case (.noResults, .noResults):
+				return true
+			case (.results(let resultsL), .results(let resultsR)):
+				return resultsL == resultsR
+			case (_, .loading):
+				return false
+			case (_, .noResults):
+				return false
+			case (_, .results(_)):
+				return false
+			case (_, .notSearchedYet):
+				return false
+			}
+		}
+		
 		  case notSearchedYet
 		  case loading
 		  case noResults
@@ -68,7 +91,7 @@ class Explo : ObservableObject {
 		state = .loading
 		
 		let url = iTunesURL(searchText: text, category: category)
-		print("URL : \(url)")
+		print("URL : \(url)") // use Logger when iOS17
 		let session = URLSession.shared
 		session.sessionDescription = "Main Shared Session"
 		
@@ -97,6 +120,13 @@ class Explo : ObservableObject {
 			}
 		}
 		dataTask?.resume()
+	}
+	
+	func cancel() {
+		guard state == .loading else { return }
+		
+		dataTask?.cancel()
+		state = .notSearchedYet
 	}
 	
 	
