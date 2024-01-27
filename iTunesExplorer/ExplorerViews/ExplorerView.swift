@@ -22,7 +22,7 @@ struct ExplorerView: View {
 	
     var body: some View {
 		ZStack {
-			// TODO : make pretty gradient light&dark compatible
+			// - TODO: make pretty gradient light&dark compatible
 			Color.accentColor.opacity(0.15)
 				.ignoresSafeArea()
 			VStack {
@@ -74,8 +74,6 @@ struct ExplorerView: View {
 			}
 		}
 	}
-	
-
 	
 	// - MARK: Private Methods
 	private func switchExploState() -> some View {
