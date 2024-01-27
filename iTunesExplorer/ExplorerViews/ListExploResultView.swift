@@ -16,7 +16,6 @@ struct ListExploResultView: View {
     var body: some View {
 		List(exploResults) { exploResult in
 			RowExploResultView(exploResult: exploResult)
-				.listRowBackground(Color.accentColor.opacity(0.35))
 				.onTapGesture {
 					exploResultTargeted = exploResult
 				}

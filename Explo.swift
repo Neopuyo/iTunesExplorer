@@ -129,6 +129,11 @@ final class Explo : ObservableObject {
 		state = .notSearchedYet
 	}
 	
+	func reset() {
+		dataTask?.cancel()
+		state = .notSearchedYet
+	}
+	
 	
 }
 

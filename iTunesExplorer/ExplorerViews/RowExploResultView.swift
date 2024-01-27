@@ -17,6 +17,7 @@ struct RowExploResultView: View {
 				switch phase {
 				case .empty:
 					ProgressView()
+						.progressViewStyle(CircularProgressViewStyle(tint: Color.accentColor))
 				case .success(let image):
 					image
 						.resizable()

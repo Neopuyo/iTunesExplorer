@@ -37,6 +37,7 @@ struct DetailExploResultView: View {
 					switch phase {
 					case .empty:
 						ProgressView()
+							.progressViewStyle(CircularProgressViewStyle(tint: Color.accentColor))
 					case .success(let image):
 						image
 							.resizable()
@@ -105,7 +106,7 @@ struct DetailExploResultView: View {
 				} label: {
 					Text(getPrice())	
 				}
-				.buttonStyle(ScaleOnTap())
+				.buttonStyle(ScaleOnTap(capsuled: true))
 				.padding(.horizontal)
 				.frame(maxWidth: .infinity, alignment: .trailing)
 			}

@@ -23,10 +23,10 @@ struct ExplorerView: View {
     var body: some View {
 		ZStack {
 			// - TODO: make pretty gradient light&dark compatible
-			Color.accentColor.opacity(0.15)
-				.ignoresSafeArea()
+			ExplorerGradient()
 			VStack {
 				HStack {
+					// TODO: - opacity when star is up
 					Image(systemName: "magnifyingglass.circle.fill")
 					TextField("Music, app, e-book...", text: $exploFieldInput)
 						.submitLabel(.search)
@@ -35,10 +35,13 @@ struct ExplorerView: View {
 						.onSubmit { processingExplo(categoryTag: segmentedControlTag) }
 					Button {
 						if canClear {
+							// - TODO: Make it simplier
 							exploFieldInput = ""
 							exploFieldFocused = true
-							explo.cancel()
+							exploResults = []
+							explo.reset()
 						} else {
+							exploFieldFocused = false
 							processingExplo(categoryTag: segmentedControlTag)
 						}
 					} label: {
@@ -46,7 +49,8 @@ struct ExplorerView: View {
 							.animation(.easeInOut, value: canClear)
 							.rotationEffect(Angle(degrees: canClear ? 45.0 : 0))
 					}
-					.disabled(exploFieldInput.isEmpty)
+					// TODO: - fix it to lose focus ang get back star icon
+					.disabled(exploFieldInput.isEmpty && exploResults.count == 0)
 					.alert("Network Issue", isPresented: $showingAlert) {
 						Button("Ok", role: .cancel) { showingAlert = false }
 					} message: {
@@ -62,6 +66,7 @@ struct ExplorerView: View {
 					Text("E-book").tag(3)
 				}.pickerStyle(.segmented)
 					.onChange(of: segmentedControlTag) { tag in
+						// - TODO: Fix infinite progressView on image when exploring with swaping segmented control
 						processingExplo(categoryTag: tag)
 					}
 				
@@ -69,9 +74,6 @@ struct ExplorerView: View {
 					.frame(maxHeight: .infinity, alignment: .top)
 			}
 			.padding()
-			.onAppear() {
-				focusTextFieldOnAppear()
-			}
 		}
 	}
 	
@@ -80,17 +82,11 @@ struct ExplorerView: View {
 		VStack(spacing: 0) {
 			switch explo.state {
 			case .notSearchedYet:
-				// - TODO: welcome user with picture&Text, button to focus on textField + logoapp icon
-				Text("Not Searched Yet")
-					.font(.footnote)
-					.foregroundStyle(Color.accentColor.opacity(0.5))
-			case .loading:
-				 ProgressView {
-					// - TODO: animate text with moving gradient inside typo
-					Text("Exploring")
-						 .font(.caption)
-						 .foregroundStyle(Color.accentColor.opacity(0.5))
+				if !exploFieldFocused {
+					ListNotSearchedYetView(exploFieldFocused: $exploFieldFocused)
 				}
+			case .loading:
+				ListLoadingView()
 			case .noResults:
 				Label(
 					title: { 
@@ -126,12 +122,7 @@ struct ExplorerView: View {
 		}
 	}
 	
-	private func focusTextFieldOnAppear() {
-		// Delayed it should not longer needed with iOS >= 16
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-			self.exploFieldFocused = true
-		}
-	}
+
 }
     
 

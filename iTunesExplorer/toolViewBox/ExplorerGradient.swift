@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ExplorerGradient: View {
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: [Color.accentColor, Color.complementaryColor]), startPoint: .top, endPoint: .bottom)
+		LinearGradient(gradient: Gradient(colors: [Color.gradientStart, Color.gradientEnd]), startPoint: .top, endPoint: .bottom)
             .ignoresSafeArea()
     }
 }
