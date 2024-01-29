@@ -67,7 +67,8 @@ struct ExplorerView: View {
 				}.pickerStyle(.segmented)
 					.onChange(of: segmentedControlTag) { tag in
 						// - TODO: Fix infinite progressView on image when exploring with swaping segmented control
-						processingExplo(categoryTag: tag)
+						// [+] -> ici une fonction qui vide la liste avant ?
+                        processingExplo(categoryTag: tag)
 					}
 				
 				switchExploState()
@@ -104,6 +105,7 @@ struct ExplorerView: View {
 	
 	private func processingExplo(categoryTag: Int) {
 		guard let category = Explo.Category(rawValue: categoryTag) else {
+            // - TODO: utiliser un log error ou un fatal error ici au lieu du print ?
 			print("Error segmented control - tag = \(categoryTag)")
 			return
 		}

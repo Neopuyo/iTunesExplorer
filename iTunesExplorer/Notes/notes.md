@@ -17,6 +17,13 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 ### **Neopuyo personnal Library**
 
 - [ ] créer de la Doc avec DocC -> tester up la version dans manifest. Sinon tant pis faire une doc peu custom
+- [ ] Retester avec version +up dans le manifest + nommer l'article [`GettingStarted.md`](https://developer.apple.com/documentation/xcode/adding-supplemental-content-to-a-documentation-catalog)
+
+```swift
+platforms: [
+        .iOS("16.0") // depuis la sample app panda meme creator 
+    ],
+```
 
 ### **iTunesExplorer+**
 
@@ -38,9 +45,12 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
   - v1 blur (laisser le readme pour 42)
   - v2 networkLayer combine (plus tard, une fois combine integré)
 - **TODO**  
-  1. [ ] 2 couleurs + fichier swift pour un gradient en background 
-  2. [ ] explo.state == .loading => animate text with moving gradient inside typo
-  3. [ ] explo.state == .notSearchedYet => welcome user with picture&Text, button to focus on textField + logoapp icon
+  1. [X] 2 couleurs + fichier swift pour un gradient en background 
+  2. [X] explo.state == .loading => animate text with moving gradient inside typo
+  3. [ ] explo.state == .notSearchedYet => StarExplo + logoapp icon `a continuer`
+  4. [ ] simplifier le exploView > Button > if canClear { }
+  5. [ ] bug image fetch infini si on swap avec le segmented control
+
 - [ ] **Git branch** integrer combine maintenant
 - [ ] retester des fetch
 - [ ] Une fois le fetch ok -> affichage de la list des results + segmented controls pour category
