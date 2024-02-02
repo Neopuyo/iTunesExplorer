@@ -10,10 +10,11 @@ import SwiftUI
 struct ListNotSearchedYetView: View {
 	
 	@State private var rotation = -7.5
+	
+	let starText: String
 	let onTapCompletion: () -> ()
 	
 	var body: some View {
-		// - TODO: welcome user with picture&Text, button to focus on textField + logoapp icon
 		VStack {
 		
 			Circle()
@@ -34,9 +35,12 @@ struct ListNotSearchedYetView: View {
 							.foregroundStyle(Color.complementary)
 							.frame(width: 120, height: 120)
 							.overlay {
-								Text("Tap me !")
+								Text(starText)
 									.foregroundStyle(Color.accentColor.opacity(0.6))
 									.font(.caption)
+									.transaction { transaction in
+										transaction.animation = nil
+									}
 							}
 							.rotationEffect(Angle(degrees: rotation))
 							.animation(
@@ -54,6 +58,7 @@ struct ListNotSearchedYetView: View {
 			rotation = 7.5
 		}
     }
+	
 }
 
 //#Preview {

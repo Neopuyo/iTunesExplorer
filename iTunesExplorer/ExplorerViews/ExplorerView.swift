@@ -28,6 +28,7 @@ struct ExplorerView: View {
 			VStack {
 				if isExploActive {
 					VStack {
+						// TODO: - séparer ces responsabilité à des sous vues, utiliser le delegate pattern ?
 						HStack {
 							Image(systemName: "magnifyingglass.circle.fill")
 								.foregroundStyle(.accent)
@@ -75,7 +76,7 @@ struct ExplorerView: View {
 		VStack(spacing: 0) {
 			switch explo.state {
 			case .notSearchedYet:
-				ListNotSearchedYetView() { starIsTapped() }
+				ListNotSearchedYetView(starText:getStarText().description) { starIsTapped() }
 			case .loading:
 				// TODO: - ajuster le texte en fonction de l'action de l'étoile : tap me / cancel / search-explore
 				ListLoadingView()
@@ -125,6 +126,28 @@ struct ExplorerView: View {
 		exploFieldFocused = true
 		exploResults = []
 		explo.reset()
+	}
+	
+	private enum StarText: CustomStringConvertible {
+		case showMenu, hideMenu, launchExplo
+		
+		var description: String {
+			switch self {
+			case .showMenu : return "Tap me !"
+			case .hideMenu : return "Back"
+			case .launchExplo : return "Search"
+			}
+		}
+	}
+	
+	private func getStarText() -> StarText {
+		if !isExploActive {
+			return .showMenu
+		} else if isDeleteUp {
+			return .launchExplo
+		} else {
+			return .hideMenu
+		}
 	}
 	
 
