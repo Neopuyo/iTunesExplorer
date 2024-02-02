@@ -16,47 +16,40 @@ struct ExplorerView: View {
 	
 	@StateObject private var explo = Explo()
 	
-	var canClear: Bool {
-		explo.state != .notSearchedYet
+	private var isActive: Bool {
+		explo.state != .notSearchedYet || exploFieldFocused == true
+	}
+	
+	private var isDeleteUp: Bool {
+		isActive && !exploFieldInput.isEmpty
 	}
 	
     var body: some View {
 		ZStack {
-			// - TODO: make pretty gradient light&dark compatible
 			ExplorerGradient()
 			VStack {
 				HStack {
-					// TODO: - opacity when star is up
 					Image(systemName: "magnifyingglass.circle.fill")
+						.foregroundStyle(isActive ? .accent : .primary)
 					TextField("Music, app, e-book...", text: $exploFieldInput)
 						.submitLabel(.search)
 						.disableAutocorrection(true)
 						.focused($exploFieldFocused)
 						.onSubmit { processingExplo(categoryTag: segmentedControlTag) }
 					Button {
-						if canClear {
-							// - TODO: Make it simplier
-							exploFieldInput = ""
-							exploFieldFocused = true
-							exploResults = []
-							explo.reset()
-						} else {
-							exploFieldFocused = false
-							processingExplo(categoryTag: segmentedControlTag)
-						}
+						deleteIsTapped()
 					} label: {
-						Image(systemName: "plus.circle.fill")
-							.animation(.easeInOut, value: canClear)
-							.rotationEffect(Angle(degrees: canClear ? 45.0 : 0))
+						Image(systemName: "delete.left.fill")
 					}
-					// TODO: - fix it to lose focus ang get back star icon
-					.disabled(exploFieldInput.isEmpty && exploResults.count == 0)
+					.disabled(!isDeleteUp)
+					.opacity(isDeleteUp ? 1 : 0)
 					.alert("Network Issue", isPresented: $showingAlert) {
 						Button("Ok", role: .cancel) { showingAlert = false }
 					} message: {
 						Text("Please, check your network settings and retry.")
 					}
 				}
+				.opacity(isActive ? 1 : 0.2)
 				.padding(.bottom, 12)
 				
 				Picker("Explo search filter", selection: $segmentedControlTag) {
@@ -68,8 +61,9 @@ struct ExplorerView: View {
 					.onChange(of: segmentedControlTag) { tag in
 						// - TODO: Fix infinite progressView on image when exploring with swaping segmented control
 						// [+] -> ici une fonction qui vide la liste avant ?
-                        processingExplo(categoryTag: tag)
+						processingExplo(categoryTag: tag)
 					}
+					.opacity(isActive ? 1 : 0.2)
 				
 				switchExploState()
 					.frame(maxHeight: .infinity, alignment: .top)
@@ -83,20 +77,11 @@ struct ExplorerView: View {
 		VStack(spacing: 0) {
 			switch explo.state {
 			case .notSearchedYet:
-				if !exploFieldFocused {
-					ListNotSearchedYetView(exploFieldFocused: $exploFieldFocused)
-				}
+				ListNotSearchedYetView() { starIsTapped() }
 			case .loading:
 				ListLoadingView()
 			case .noResults:
-				Label(
-					title: { 
-						Text("No results")
-					},
-					icon: { Image(systemName: "questionmark.circle.fill") }
-				)
-				.font(.footnote)
-				.foregroundStyle(Color.accentColor.opacity(0.5))
+				ListNoResultView()
 			case .results(let results):
 				ListExploResultView(exploResults: results)
 			}
@@ -119,9 +104,20 @@ struct ExplorerView: View {
 					}
 				}
 				exploFieldFocused = false
-//				exploFieldInput = ""
 			}
 		}
+	}
+	
+	private func starIsTapped() {
+		processingExplo(categoryTag: segmentedControlTag)
+		exploFieldFocused.toggle()
+	}
+	
+	private func deleteIsTapped() {
+		exploFieldInput = ""
+		exploFieldFocused = true
+		exploResults = []
+		explo.reset()
 	}
 	
 

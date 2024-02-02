@@ -42,7 +42,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 **@Home**
 
   1. [ ] explo.state == .notSearchedYet => StarExplo + logoapp icon `a continuer`
-  2. [ ] simplifier le exploView > Button > if canClear { }
+  2. [X] simplifier le exploView > Button > if canClear { }
   3. [ ] bug image fetch infini si on swap avec le segmented control
 
 - [ ] **Git branch** integrer combine maintenant
@@ -61,7 +61,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 
 **@Home**  
 
-- [ ] recup le test technique Luna sous forme pdf
+- [X] recup le test technique Luna sous forme pdf
 
 **`@42`**  
 
@@ -80,3 +80,4 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 ### **iTunesExplorer+**
 
 - étudier si `AsyncSequence` pourrait aider avec le fetch
+``

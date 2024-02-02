@@ -10,7 +10,7 @@ import SwiftUI
 struct ListNotSearchedYetView: View {
 	
 	@State private var rotation = -7.5
-	var exploFieldFocused: FocusState<Bool>.Binding
+	let onTapCompletion: () -> ()
 	
 	var body: some View {
 		// - TODO: welcome user with picture&Text, button to focus on textField + logoapp icon
@@ -26,8 +26,7 @@ struct ListNotSearchedYetView: View {
 				}
 				.overlay {
 					Button {
-						guard exploFieldFocused.wrappedValue == false else { return }
-						exploFieldFocused.wrappedValue = true
+						onTapCompletion()
 					} label: {
 						Image(systemName: "star.fill")
 							.resizable()
