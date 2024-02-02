@@ -13,27 +13,24 @@ struct ExplorerView: View {
 	@FocusState private var exploFieldFocused: Bool
 	@State private var exploFieldInput:String = ""
 	@State private var segmentedControlTag = 0
+	@State private var menuOpacity = 0.0
 	
 	@StateObject private var explo = Explo()
-	
-	private var isActive: Bool {
-		explo.state != .notSearchedYet || exploFieldFocused == true
-	}
+	@State private var isExploActive: Bool = false
 	
 	private var isDeleteUp: Bool {
-		isActive && !exploFieldInput.isEmpty
+		(explo.state != .notSearchedYet || exploFieldFocused == true ) && !exploFieldInput.isEmpty
 	}
 	
     var body: some View {
 		ZStack {
 			ExplorerGradient()
 			VStack {
-				Text("isActive : \(isActive.description)")
-				if isActive {
+				if isExploActive {
 					VStack {
 						HStack {
 							Image(systemName: "magnifyingglass.circle.fill")
-								.foregroundStyle(isActive ? .accent : .primary)
+								.foregroundStyle(.accent)
 							TextField("Music, app, e-book...", text: $exploFieldInput)
 								.submitLabel(.search)
 								.disableAutocorrection(true)
@@ -45,7 +42,6 @@ struct ExplorerView: View {
 								Image(systemName: "delete.left.fill")
 							}
 							.disabled(!isDeleteUp)
-							.opacity(isDeleteUp ? 1 : 0)
 							.alert("Network Issue", isPresented: $showingAlert) {
 								Button("Ok", role: .cancel) { showingAlert = false }
 							} message: {
@@ -61,11 +57,10 @@ struct ExplorerView: View {
 							Text("E-book").tag(3)
 						}.pickerStyle(.segmented)
 							.onChange(of: segmentedControlTag) { tag in
-								// - TODO: Fix infinite progressView on image when exploring with swaping segmented control
-								// [+] -> ici une fonction qui vide la liste avant ?
 								processingExplo(categoryTag: tag)
 							}
 					}
+					.opacity(menuOpacity)
 				}
 				
 				switchExploState()
@@ -82,6 +77,7 @@ struct ExplorerView: View {
 			case .notSearchedYet:
 				ListNotSearchedYetView() { starIsTapped() }
 			case .loading:
+				// TODO: - ajuster le texte en fonction de l'action de l'étoile : tap me / cancel / search-explore
 				ListLoadingView()
 			case .noResults:
 				ListNoResultView()
@@ -97,23 +93,31 @@ struct ExplorerView: View {
 			print("Error segmented control - tag = \(categoryTag)")
 			return
 		}
-		withAnimation {
-			explo.performExplo(for: exploFieldInput, category: category) { success in
-				if !success {
-					showingAlert = true
-				} else {
-					if case .results(let list) = explo.state {
-						exploResults = list
-					}
+		explo.performExplo(for: exploFieldInput, category: category) { success in
+			if !success {
+				showingAlert = true
+			} else {
+				if case .results(let list) = explo.state {
+					exploResults = list
 				}
-				exploFieldFocused = false
 			}
+			exploFieldFocused = false
 		}
 	}
 	
 	private func starIsTapped() {
-		processingExplo(categoryTag: segmentedControlTag)
-		exploFieldFocused.toggle()
+		// - TODO: utiliser une enum pour rendre les state de cet ecran +clairs ?
+		withAnimation {
+			if isExploActive && exploFieldInput.isEmpty {
+				menuOpacity = 0.0
+				isExploActive = false
+			} else {
+				processingExplo(categoryTag: segmentedControlTag)
+				menuOpacity = 1.0
+				isExploActive = true
+				exploFieldFocused.toggle()
+			}
+		}
 	}
 	
 	private func deleteIsTapped() {
