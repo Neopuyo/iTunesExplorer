@@ -28,42 +28,45 @@ struct ExplorerView: View {
 		ZStack {
 			ExplorerGradient()
 			VStack {
-				HStack {
-					Image(systemName: "magnifyingglass.circle.fill")
-						.foregroundStyle(isActive ? .accent : .primary)
-					TextField("Music, app, e-book...", text: $exploFieldInput)
-						.submitLabel(.search)
-						.disableAutocorrection(true)
-						.focused($exploFieldFocused)
-						.onSubmit { processingExplo(categoryTag: segmentedControlTag) }
-					Button {
-						deleteIsTapped()
-					} label: {
-						Image(systemName: "delete.left.fill")
-					}
-					.disabled(!isDeleteUp)
-					.opacity(isDeleteUp ? 1 : 0)
-					.alert("Network Issue", isPresented: $showingAlert) {
-						Button("Ok", role: .cancel) { showingAlert = false }
-					} message: {
-						Text("Please, check your network settings and retry.")
+				Text("isActive : \(isActive.description)")
+				if isActive {
+					VStack {
+						HStack {
+							Image(systemName: "magnifyingglass.circle.fill")
+								.foregroundStyle(isActive ? .accent : .primary)
+							TextField("Music, app, e-book...", text: $exploFieldInput)
+								.submitLabel(.search)
+								.disableAutocorrection(true)
+								.focused($exploFieldFocused)
+								.onSubmit { processingExplo(categoryTag: segmentedControlTag) }
+							Button {
+								deleteIsTapped()
+							} label: {
+								Image(systemName: "delete.left.fill")
+							}
+							.disabled(!isDeleteUp)
+							.opacity(isDeleteUp ? 1 : 0)
+							.alert("Network Issue", isPresented: $showingAlert) {
+								Button("Ok", role: .cancel) { showingAlert = false }
+							} message: {
+								Text("Please, check your network settings and retry.")
+							}
+						}
+						.padding(.bottom, 12)
+						
+						Picker("Explo search filter", selection: $segmentedControlTag) {
+							Text("All").tag(0)
+							Text("Music").tag(1)
+							Text("Apps").tag(2)
+							Text("E-book").tag(3)
+						}.pickerStyle(.segmented)
+							.onChange(of: segmentedControlTag) { tag in
+								// - TODO: Fix infinite progressView on image when exploring with swaping segmented control
+								// [+] -> ici une fonction qui vide la liste avant ?
+								processingExplo(categoryTag: tag)
+							}
 					}
 				}
-				.opacity(isActive ? 1 : 0.2)
-				.padding(.bottom, 12)
-				
-				Picker("Explo search filter", selection: $segmentedControlTag) {
-					Text("All").tag(0)
-					Text("Music").tag(1)
-					Text("Apps").tag(2)
-					Text("E-book").tag(3)
-				}.pickerStyle(.segmented)
-					.onChange(of: segmentedControlTag) { tag in
-						// - TODO: Fix infinite progressView on image when exploring with swaping segmented control
-						// [+] -> ici une fonction qui vide la liste avant ?
-						processingExplo(categoryTag: tag)
-					}
-					.opacity(isActive ? 1 : 0.2)
 				
 				switchExploState()
 					.frame(maxHeight: .infinity, alignment: .top)

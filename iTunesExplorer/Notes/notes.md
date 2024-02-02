@@ -41,7 +41,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 
 **@Home**
 
-  1. [ ] explo.state == .notSearchedYet => StarExplo + logoapp icon `a continuer`
+  1. [X] explo.state == .notSearchedYet => StarExplo + logoapp icon `a continuer`
   2. [X] simplifier le exploView > Button > if canClear { }
   3. [ ] bug image fetch infini si on swap avec le segmented control
 
@@ -61,11 +61,11 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 
 **@Home**  
 
-- [X] recup le test technique Luna sous forme pdf
+- [ ] 
 
 **`@42`**  
 
-- [ ] une fois pret, check le test technique 1 de lunabee
+- [ ] Readme du projet itunesExplorer -> public -> screens + gif
 - [ ] continuer de revoir **sample App d'apple** (>seismonester..)
 - [ ] Xcode doc apple -> testable (continuer voir dans Jobiview)
 - [ ] continuer de voir le truc sur testView dans la partie jobiview structural pattern

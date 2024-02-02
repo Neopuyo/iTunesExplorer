@@ -8,6 +8,8 @@ struct ExplorerGradient: View {
     }
 }
 
+// TODO: - Clean comments memo
+
 /*
 
 en faire le colorset : Color.complementaryColor

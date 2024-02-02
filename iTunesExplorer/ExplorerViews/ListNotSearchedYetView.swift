@@ -33,6 +33,11 @@ struct ListNotSearchedYetView: View {
 							.scaledToFit()
 							.foregroundStyle(Color.complementary)
 							.frame(width: 120, height: 120)
+							.overlay {
+								Text("Tap me !")
+									.foregroundStyle(Color.accentColor.opacity(0.6))
+									.font(.caption)
+							}
 							.rotationEffect(Angle(degrees: rotation))
 							.animation(
 								.linear(duration: 1.2)
@@ -41,6 +46,7 @@ struct ListNotSearchedYetView: View {
 					}
 					.buttonStyle(ScaleOnTap(capsuled: false))
 				}
+				
 			
 		}
 		.frame(maxHeight: .infinity, alignment: .center)
