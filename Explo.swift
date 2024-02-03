@@ -30,7 +30,6 @@ final class Explo : ObservableObject {
 	enum State: Equatable {
 		static func == (lhs: Explo.State, rhs: Explo.State) -> Bool {
 			switch (lhs, rhs) {
-				
 			case (.notSearchedYet, .notSearchedYet):
 				return true
 			case (.loading, .loading):

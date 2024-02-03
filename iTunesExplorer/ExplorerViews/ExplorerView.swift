@@ -29,6 +29,8 @@ struct ExplorerView: View {
 				if isExploActive {
 					VStack {
 						// TODO: - séparer ces responsabilité à des sous vues, utiliser le delegate pattern ?
+                        // peut etre viewBuilder comme ce lien :  
+                        // https://medium.com/@kevin-jonathan/oversimplifying-swiftui-view-code-using-viewstate-and-swiftuis-viewbuilder-case-study-included-862b7e60c7da
 						HStack {
 							Image(systemName: "magnifyingglass.circle.fill")
 								.foregroundStyle(.accent)
@@ -70,6 +72,8 @@ struct ExplorerView: View {
 			.padding()
 		}
 	}
+
+    // - MARK: ViewBuilders
 	
 	// - MARK: Private Methods
 	private func switchExploState() -> some View {

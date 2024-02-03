@@ -43,17 +43,29 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 
   1. [X] explo.state == .notSearchedYet => StarExplo + logoapp icon `a continuer`
   2. [X] simplifier le exploView > Button > if canClear { }
-  3. [ ] bug image fetch infini si on swap avec le segmented control
+  3. [X] bug image fetch infini si on swap avec le segmented control
 
-- [ ] **Git branch** integrer combine maintenant
+  1. [ ] TODO ExplorerView voir si peur refract utilisant viewbuilder (cf lien)
+  2. [ ] TODO utiliser enum pour gérer plus clairement les etats du star button
+
+- [ ] link mon compte firefox -> sur mon windows + mac
+- [ ] **Git branch** integrer combine maintenant  
+
+  -  video wwdc19 combine in pratice 5min10  
+  -  [switthinkusefull video](https://www.youtube.com/watch?v=fdxFp5vU6MQ) + screens dans ./ressources  
+
 - [ ] retester des fetch
 - [ ] Une fois le fetch ok -> affichage de la list des results + segmented controls pour category
-- [ ] Ajouter une page d'intro / un bouton avant d'afficher la searchbar avec une animation sympa comme [ceci](https://www.hackingwithswift.com/quick-start/swiftui/how-to-dynamically-adjust-the-appearance-of-a-view-based-on-its-size-and-location)
+- [ ] Ajouter une page d'intro / un bouton avant d'afficher la searchbar avec une animation sympa comme [ceci](https://www.hackingwithswift.com/quick-start/swiftui/how-to-dynamically-adjust-the-appe          arance-of-a-view-based-on-its-size-and-location)
 - [ ] faire un Unit Test + un UItest !
 
 **`@42`**
 
   1. [ ] check si je peux chercher des solutions sur les "TO DO" en cours
+  
+&emsp; **Parties `"highlighted"` à ajouter au readme :**  
+
+- [ ]
 
 <br/>
 
