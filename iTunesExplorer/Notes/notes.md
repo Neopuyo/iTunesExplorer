@@ -44,6 +44,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
   1. [X] explo.state == .notSearchedYet => StarExplo + logoapp icon `a continuer`
   2. [X] simplifier le exploView > Button > if canClear { }
   3. [X] bug image fetch infini si on swap avec le segmented control
+  3. [ ] XCTest avant de passer a comnine pour comparer ?
 
   1. [ ] TODO ExplorerView voir si peur refract utilisant viewbuilder (cf lien)
   2. [ ] TODO utiliser enum pour gérer plus clairement les etats du star button
@@ -62,6 +63,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 **`@42`**
 
   1. [ ] check si je peux chercher des solutions sur les "TO DO" en cours
+  2. [ ] essayer de voir ce que je peux faire pour tester perform explo
   
 &emsp; **Parties `"highlighted"` à ajouter au readme :**  
 

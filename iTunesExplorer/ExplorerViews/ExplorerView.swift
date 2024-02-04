@@ -28,40 +28,9 @@ struct ExplorerView: View {
 			VStack {
 				if isExploActive {
 					VStack {
-						// TODO: - séparer ces responsabilité à des sous vues, utiliser le delegate pattern ?
-                        // peut etre viewBuilder comme ce lien :  
-                        // https://medium.com/@kevin-jonathan/oversimplifying-swiftui-view-code-using-viewstate-and-swiftuis-viewbuilder-case-study-included-862b7e60c7da
-						HStack {
-							Image(systemName: "magnifyingglass.circle.fill")
-								.foregroundStyle(.accent)
-							TextField("Music, app, e-book...", text: $exploFieldInput)
-								.submitLabel(.search)
-								.disableAutocorrection(true)
-								.focused($exploFieldFocused)
-								.onSubmit { processingExplo(categoryTag: segmentedControlTag) }
-							Button {
-								deleteIsTapped()
-							} label: {
-								Image(systemName: "delete.left.fill")
-							}
-							.disabled(!isDeleteUp)
-							.alert("Network Issue", isPresented: $showingAlert) {
-								Button("Ok", role: .cancel) { showingAlert = false }
-							} message: {
-								Text("Please, check your network settings and retry.")
-							}
-						}
-						.padding(.bottom, 12)
-						
-						Picker("Explo search filter", selection: $segmentedControlTag) {
-							Text("All").tag(0)
-							Text("Music").tag(1)
-							Text("Apps").tag(2)
-							Text("E-book").tag(3)
-						}.pickerStyle(.segmented)
-							.onChange(of: segmentedControlTag) { tag in
-								processingExplo(categoryTag: tag)
-							}
+						exploFieldStackView
+							.padding(.bottom, 12)
+						segmentedControlView
 					}
 					.opacity(menuOpacity)
 				}
@@ -74,8 +43,44 @@ struct ExplorerView: View {
 	}
 
     // - MARK: ViewBuilders
+	@ViewBuilder
+	private var exploFieldStackView: some View {
+		HStack {
+			Image(systemName: "magnifyingglass.circle.fill")
+				.foregroundStyle(.accent)
+			TextField("Music, app, e-book...", text: $exploFieldInput)
+				.submitLabel(.search)
+				.disableAutocorrection(true)
+				.focused($exploFieldFocused)
+				.onSubmit { processingExplo(categoryTag: segmentedControlTag) }
+			Button {
+				deleteIsTapped()
+			} label: {
+				Image(systemName: "delete.left.fill")
+			}
+			.disabled(!isDeleteUp)
+			.alert("Network Issue", isPresented: $showingAlert) {
+				Button("Ok", role: .cancel) { showingAlert = false }
+			} message: {
+				Text("Please, check your network settings and retry.")
+			}
+		}
+	}
 	
-	// - MARK: Private Methods
+	@ViewBuilder
+	private var segmentedControlView: some View {
+		Picker("Explo search filter", selection: $segmentedControlTag) {
+			Text("All").tag(0)
+			Text("Music").tag(1)
+			Text("Apps").tag(2)
+			Text("E-book").tag(3)
+			Text("Movies").tag(4)
+		}.pickerStyle(.segmented)
+			.onChange(of: segmentedControlTag) { tag in
+				processingExplo(categoryTag: tag)
+			}
+	}
+	
 	private func switchExploState() -> some View {
 		VStack(spacing: 0) {
 			switch explo.state {
@@ -92,6 +97,7 @@ struct ExplorerView: View {
 		}
 	}
 	
+	// - MARK: Private Methods
 	private func processingExplo(categoryTag: Int) {
 		guard let category = Explo.Category(rawValue: categoryTag) else {
             // - TODO: utiliser un log error ou un fatal error ici au lieu du print ?

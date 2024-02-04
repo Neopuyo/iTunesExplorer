@@ -15,7 +15,7 @@ final class Explo : ObservableObject {
 	
 	enum Category: Int {
 		case all = 0
-		case music, software, ebooks
+		case music, software, ebooks, movie
 		
 		var type: String {
 			switch self {
@@ -23,6 +23,7 @@ final class Explo : ObservableObject {
 			case .music: return "musicTrack"
 			case .software: return "software"
 			case .ebooks: return "ebook"
+			case .movie: return "movie"
 			}
 		}
 	}
