@@ -87,7 +87,6 @@ struct ExplorerView: View {
 			case .notSearchedYet:
 				ListNotSearchedYetView(starText:getStarText().description) { starIsTapped() }
 			case .loading:
-				// TODO: - ajuster le texte en fonction de l'action de l'étoile : tap me / cancel / search-explore
 				ListLoadingView()
 			case .noResults:
 				ListNoResultView()

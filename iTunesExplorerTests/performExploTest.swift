@@ -9,31 +9,69 @@ import XCTest
 @testable import iTunesExplorer
 
 final class performExploTest: XCTestCase {
-
-//    override func setUpWithError() throws {
-//        // Put setup code here. This method is called before the invocation of each test method in the class.
-//    }
-//
-//    override func tearDownWithError() throws {
-//        // Put teardown code here. This method is called after the invocation of each test method in the class.
-//    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+	
+	    func testDumb() {
+			XCTExpectFailure()
+			XCTAssertEqual(25, Int(24.0), "The dumb test failed")
+	    }
+	
+	func testComparingFetches() throws {
+		var resultWithURLSession:String = ""
+		var resultWithCombine:String = ""
 		
-		XCTAssertEqual(25, Int(24.0), "The stupid test failed")
 		
-    }
-
-//    func testPerformanceExample() throws {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
-
+		let explo_URLSession = Explo()
+		let explo_Combine = Explo()
+		
+		var exploResults_URLSession = [ExploResult]()
+		var exploResults_Combine = [ExploResult]()
+		
+		let exploItem = "smurf"
+		
+		// URLSESSION FETCH
+		let expectation_URLSession = XCTestExpectation(description: "perform UrlSession explo with item \(exploItem)")
+		
+		explo_URLSession.performExplo(for: exploItem, category: Explo.Category.movie) { success in
+			if !success {
+				assertionFailure("perform explo URLSession failed for term \(exploItem)")
+			} else {
+				if case .results(let list) = explo_URLSession.state {
+					exploResults_URLSession = list
+					for item in exploResults_URLSession {
+						resultWithURLSession += item.name + ", "
+					}
+					expectation_URLSession.fulfill()
+				}
+			}
+		}
+		
+		// COMBINE FETCH
+		let expectation_Combine = XCTestExpectation(description: "perform Combine explo with item \(exploItem)")
+		
+		explo_Combine.performExplo(for: exploItem, category: Explo.Category.movie) { success in
+			if !success {
+				assertionFailure("perform explo combine failed for term \(exploItem)")
+			} else {
+				if case .results(let list) = explo_Combine.state {
+					exploResults_Combine = list
+					for item in exploResults_Combine {
+						resultWithCombine += item.name + ", "
+					}
+					expectation_Combine.fulfill()
+				}
+			}
+		}
+		
+		wait(for: [expectation_URLSession, expectation_Combine], timeout: 6.0)
+		XCTAssertTrue(exploResults_URLSession.count > 0, "no string result for URLSession explo")
+		XCTAssertTrue(exploResults_Combine.count > 0, "no string result for Combine explo")
+		addTeardownBlock {
+			print("URLSESSION :")
+			print(resultWithURLSession)
+			
+			print("COMBINE :")
+			print(resultWithCombine)
+		}
+	}
+	
 }
