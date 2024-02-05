@@ -63,11 +63,14 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 **`@42`**
 
   1. [ ] check si je peux chercher des solutions sur les "TO DO" en cours
-  2. [ ] essayer de voir ce que je peux faire pour tester perform explo
+  2. [X] essayer de voir ce que je peux faire pour tester perform explo
   
 &emsp; **Parties `"highlighted"` à ajouter au readme :**  
 
-- [ ]
+- [ ] Xctest
+- [ ] Combine (une fois implementé) (revoir les titres fetch machin)
+- [ ] SwiftPackage Manager
+- [ ] Faire sommaire
 
 <br/>
 
