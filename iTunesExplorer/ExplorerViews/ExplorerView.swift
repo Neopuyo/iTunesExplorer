@@ -15,7 +15,7 @@ struct ExplorerView: View {
 	@State private var segmentedControlTag = 0
 	@State private var menuOpacity = 0.0
 	
-	@StateObject private var explo = Explo()
+	@StateObject private var explo = ExploUsingCombine()
 	@State private var isExploActive: Bool = false
 	
 	private var isDeleteUp: Bool {
@@ -98,7 +98,7 @@ struct ExplorerView: View {
 	
 	// - MARK: Private Methods
 	private func processingExplo(categoryTag: Int) {
-		guard let category = Explo.Category(rawValue: categoryTag) else {
+		guard let category = ExploUsingCombine.Category(rawValue: categoryTag) else {
             // - TODO: utiliser un log error ou un fatal error ici au lieu du print ?
 			print("Error segmented control - tag = \(categoryTag)")
 			return

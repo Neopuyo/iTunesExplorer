@@ -21,7 +21,7 @@ final class performExploTest: XCTestCase {
 		
 		
 		let explo_URLSession = Explo()
-		let explo_Combine = Explo()
+		let explo_Combine = ExploUsingCombine()
 		
 		var exploResults_URLSession = [ExploResult]()
 		var exploResults_Combine = [ExploResult]()
@@ -48,7 +48,7 @@ final class performExploTest: XCTestCase {
 		// COMBINE FETCH
 		let expectation_Combine = XCTestExpectation(description: "perform Combine explo with item \(exploItem)")
 		
-		explo_Combine.performExplo(for: exploItem, category: Explo.Category.movie) { success in
+		explo_Combine.performExplo(for: exploItem, category: ExploUsingCombine.Category.movie) { success in
 			if !success {
 				assertionFailure("perform explo combine failed for term \(exploItem)")
 			} else {
@@ -71,6 +71,7 @@ final class performExploTest: XCTestCase {
 			
 			print("COMBINE :")
 			print(resultWithCombine)
+			XCTAssertEqual(resultWithURLSession, resultWithCombine, "The two fetches don't give the same")
 		}
 	}
 	
