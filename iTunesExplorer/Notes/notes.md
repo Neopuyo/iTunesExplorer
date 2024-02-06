@@ -44,21 +44,23 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
   1. [X] explo.state == .notSearchedYet => StarExplo + logoapp icon `a continuer`
   2. [X] simplifier le exploView > Button > if canClear { }
   3. [X] bug image fetch infini si on swap avec le segmented control
-  3. [ ] XCTest avant de passer a comnine pour comparer ?
+  3. [X] XCTest avant de passer a comnine pour comparer ?
 
-  1. [ ] TODO ExplorerView voir si peur refract utilisant viewbuilder (cf lien)
+  1. [X] TODO ExplorerView voir si peur refract utilisant viewbuilder (cf lien)
   2. [ ] TODO utiliser enum pour gérer plus clairement les etats du star button
 
 - [ ] link mon compte firefox -> sur mon windows + mac
-- [ ] **Git branch** integrer combine maintenant  
+- [ ] faire image 1000x500px logo + nom ItunesExplorer  pour le readme
+- [ ] integrer combine > WIP cleaning
 
   -  video wwdc19 combine in pratice 5min10  
   -  [switthinkusefull video](https://www.youtube.com/watch?v=fdxFp5vU6MQ) + screens dans ./ressources  
+- [ ] Virer la dependency pour tap gesture des record simulator  
+Tester d'utiliser : `defaults write com.apple.iphonesimulator ShowSingleTouches 1`
 
-- [ ] retester des fetch
-- [ ] Une fois le fetch ok -> affichage de la list des results + segmented controls pour category
-- [ ] Ajouter une page d'intro / un bouton avant d'afficher la searchbar avec une animation sympa comme [ceci](https://www.hackingwithswift.com/quick-start/swiftui/how-to-dynamically-adjust-the-appe          arance-of-a-view-based-on-its-size-and-location)
-- [ ] faire un Unit Test + un UItest !
+- [ ] faire un *Unit Test_`ok`* + un UItest !
+
+
 
 **`@42`**
 
@@ -67,10 +69,11 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
   
 &emsp; **Parties `"highlighted"` à ajouter au readme :**  
 
-- [ ] Xctest
-- [ ] Combine (une fois implementé) (revoir les titres fetch machin)
-- [ ] SwiftPackage Manager
-- [ ] Faire sommaire
+- [X] Xctest
+- [X] Combine (une fois implementé) (revoir les titres fetch machin)
+- [X] SwiftPackage Manager
+- [X] Faire sommaire
+- [ ] Autres ? (une fois un UITest fait ? ou truc qui sort du lot)
 
 <br/>
 

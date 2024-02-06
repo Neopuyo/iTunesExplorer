@@ -9,7 +9,12 @@
 
 <br/>
 
- ## **🟦 &emsp; 🟦 🟦 🟦 🟦  &emsp; Highlighted points &emsp; 🟦 🟦 🟦 🟦 &emsp; 🟦** 
+**Highlighted parts** 
+
+* [**Fetching API using `URLSessionDataTask`**](#fetching-api-using-urlsessiondatatask)
+* [**Fetching API using `Combine`**](#fetching-api-using-combine)
+* [**Unit Testing in asynchronous context**](#unit-testing-in-asynchronous-context)
+* [**Swift Packages**](#swift-packages)
 
 ---
 
@@ -26,56 +31,45 @@
 
 <br/>
 
-## **Fetching API**
+## **Fetching API using `URLSessionDataTask`**
 
 The **core** of this app excerpt is to **fetch JSON** from iTunes **API**.  
-The initial version of iTunesExplorer is using the framework **`URLSession`** to manage the fetching asynchronously
+The initial version of iTunesExplorer is using the framework **`URLSession`** to manage the fetching asynchronously with an `URLSessionDataTask`
 
 ```swift
-func performExplo(for text: String, category: Category, completion: @escaping ExploComplete) {
+    dataTask?.cancel() // manually manage cancel fetching
 
-    dataTask?.cancel()
-
-    state = .loading
-
-    let url = iTunesURL(searchText: text, category: category)
-    let session = URLSession.shared
-    session.sessionDescription = "Main Shared Session"
-
-    dataTask = session.dataTask(with: url) { data, response, error in
-    	// using a temp state because secondary thread
-        var newState = State.notSearchedYet
-    	var success = false
-    	if let error = error as NSError?, error.code == -999 {
-    		print("search was cancelled (error code -999)")
-    		return
-    	}
-    	if let httpResponse = response as? HTTPURLResponse,
-    	   httpResponse.statusCode == 200, let data = data {
+    dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+    // receiving on [secondary thread]
+    // validating HTTPURLResponse
+    // parsing JSON
+    // handle the errors
         
-    		var searchResults = self.parse(data: data)
-    		if searchResults.isEmpty {
-    			newState = .noResults
-    		} else  {
-    			searchResults.sort(by: <)
-    			newState = .results(searchResults)
-    		}
-    		success = true
-    	}
-    	DispatchQueue.main.async {
-            // state has to be changed on main thread to prevent data races
-    		self.state = newState
-    		completion(success)
-    	}
+    // switch to [main thread] to update
+    DispatchQueue.main.async {
+        // call completion closure
+        // update states
+        }
     }
-    dataTask?.resume()
-	}
+    dataTask?.resume() // activate the URLSessionDataTask after configuration step
 ```
+*you can see entire code [here](/iTunesExplorer/Models/Explo.swift) inside* performExplo(for:category:completion:) *method*
 
-## **Fetching API reworked**
+## **Fetching API using `Combine`**
 
 Here the expected thing will be to use the **`combine`** framework to manage the fetching.  
-> `Work in progress`
+
+```swift 
+    URLSession.shared
+        .dataTaskPublisher(for: url)         // create publisher
+        .receive(on: DispatchQueue.main)     // receive on main thread
+        .tryMap { }                          // validating HTTPURLResponse
+        .decode([...])                       // parsing JSON
+        .mapError { error -> Error in }      // use an enum to identify errors
+        .sink { }                            // handle the fetched item or errors with completion closure
+        .store(in: [...])                    // automatically manage cancel fetching
+```
+*you can see entire code [here](/iTunesExplorer/Models/ExploUsingCombine.swift) inside* performExplo(for:category:callBack:) *method*
 
 <br/>
 
@@ -90,6 +84,33 @@ Here the expected thing will be to use the **`combine`** framework to manage the
 
 <br/>
 
+## **Unit Testing in asynchronous context**
+
+A quick **XCTest** unit test to valid the fetching rework using **Combine** instead of **URLSessionDataTask**.  
+As I not directly used `await` in code, i had to test the asynchronous method using `XCTestExpectation()`
+
+```swift
+import XCTest
+@testable import iTunesExplorer
+
+final class performExploTest: XCTestCase {
+
+    func testComparingFetches() throws {
+        let expectation_URLSession = XCTestExpectation()
+        let expectation_Combine = XCTestExpectation()
+        // [...]
+        expectation_URLSession.fulfill()
+        // [...]
+
+        wait(for: [expectation_URLSession, expectation_Combine], timeout: 6.0)
+
+        addTeardownBlock {
+            XCTAssertEqual(resultWithURLSession, resultWithCombine, "The two fetches don't give the same")
+        }
+    }
+}
+```
+
 <div style="display: flex; align-items: center;">
     <div style="margin-right: 20px;">
         <h2><b>Color schemes</b></h2>
@@ -99,3 +120,14 @@ Here the expected thing will be to use the **`combine`** framework to manage the
     <img src="./ressources/appIcon%2BcolorScheme.gif" alt="showing light and dark mode" style="width: 320px;">
 </div>
 
+## **Swift Packages**
+
+I created a personnal Library named **Neopuyo** as a **Swift Package** and integrated it in the project.  
+The content of the library isn't really meaningfull here, the purpose was more about training.  
+
+And before all, i could write this, just below Apple modules : 
+
+```swift
+import SwiftUI
+import Neopuyo // so cool isn't it ?
+```

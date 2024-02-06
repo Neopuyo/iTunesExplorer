@@ -10,10 +10,10 @@ import XCTest
 
 final class performExploTest: XCTestCase {
 	
-	    func testDumb() {
-			XCTExpectFailure()
-			XCTAssertEqual(25, Int(24.0), "The dumb test failed")
-	    }
+    func testDumb() {
+        XCTExpectFailure()
+        XCTAssertEqual(25, Int(24.0), "The dumb test failed")
+    }
 	
 	func testComparingFetches() throws {
 		var resultWithURLSession:String = ""
