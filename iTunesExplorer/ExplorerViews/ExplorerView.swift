@@ -13,10 +13,12 @@ struct ExplorerView: View {
 	@FocusState private var exploFieldFocused: Bool
 	@State private var exploFieldInput:String = ""
 	@State private var segmentedControlTag = 0
-	@State private var menuOpacity = 0.0
+	@State private var exploBarOpacity = 0.0
+	@State private var segmentedControlOpacity = 0.0
 	
 	@StateObject private var explo = ExploUsingCombine()
-	@State private var isExploActive: Bool = false
+	@State private var displayExploBar: Bool = false
+	@State private var displaySegmentedControl: Bool = false
 	
 	private var isDeleteUp: Bool {
 		(explo.state != .notSearchedYet || exploFieldFocused == true ) && !exploFieldInput.isEmpty
@@ -26,13 +28,15 @@ struct ExplorerView: View {
 		ZStack {
 			ExplorerGradient()
 			VStack {
-				if isExploActive {
+				if displayExploBar {
 					VStack {
 						exploFieldStackView
 							.padding(.bottom, 12)
-						segmentedControlView
+						if displaySegmentedControl {
+							segmentedControlView
+						}
 					}
-					.opacity(menuOpacity)
+					.opacity(exploBarOpacity)
 				}
 				
 				switchExploState()
@@ -45,25 +49,58 @@ struct ExplorerView: View {
     // - MARK: ViewBuilders
 	@ViewBuilder
 	private var exploFieldStackView: some View {
-		HStack {
-			Image(systemName: "magnifyingglass.circle.fill")
-				.foregroundStyle(.accent)
-			TextField("Music, app, e-book...", text: $exploFieldInput)
-				.submitLabel(.search)
-				.disableAutocorrection(true)
-				.focused($exploFieldFocused)
-				.onSubmit { processingExplo(categoryTag: segmentedControlTag) }
-			Button {
-				deleteIsTapped()
-			} label: {
-				Image(systemName: "delete.left.fill")
+		// - TODO: make custom Style for same images/button
+		// - Extract-Rework as a view ?
+		
+		VStack {
+			HStack {
+				Button {
+					backAction()
+				} label: {
+					Image(systemName: "chevron.backward.circle.fill")
+						.foregroundStyle(.accent)
+						.font(.title)
+						.padding(.leading)
+				}
+				Spacer()
+				Button {
+					showFiltersIsTapped()
+				} label: {
+					Image(systemName: displaySegmentedControl ? "tag.circle.fill" : "tag.circle")
+						.foregroundStyle(.accent)
+						.font(.title)
+						.padding(.trailing)
+				}
 			}
-			.disabled(!isDeleteUp)
-			.alert("Network Issue", isPresented: $showingAlert) {
-				Button("Ok", role: .cancel) { showingAlert = false }
-			} message: {
-				Text("Please, check your network settings and retry.")
+			HStack {
+				Image(systemName: "magnifyingglass")
+					.foregroundStyle(.accent)
+					.font(.body)
+					.padding(.leading)
+				TextField("Music, app, e-book...", text: $exploFieldInput)
+					.submitLabel(.search)
+					.disableAutocorrection(true)
+					.focused($exploFieldFocused)
+					.onSubmit { processingExplo(categoryTag: segmentedControlTag) }
+				Button {
+					//				deleteIsTapped()
+					// TODO : set up microphoneButton action
+				} label: {
+					Image(systemName: "mic.circle.fill")
+						.foregroundStyle(.accent)
+						.font(.title)
+						.padding(.trailing)
+				}
+				//.disabled(!isDeleteUp)
+				.alert("Network Issue", isPresented: $showingAlert) {
+					Button("Ok", role: .cancel) { showingAlert = false }
+				} message: {
+					Text("Please, check your network settings and retry.")
+				}
 			}
+			.padding(.vertical, 6)
+			.background(Color.grey50.opacity(0.25))
+			.cornerRadius(12.0)
 		}
 	}
 	
@@ -76,9 +113,11 @@ struct ExplorerView: View {
 			Text("E-book").tag(3)
 			Text("Movies").tag(4)
 		}.pickerStyle(.segmented)
-			.onChange(of: segmentedControlTag) { tag in
-				processingExplo(categoryTag: tag)
-			}
+		.onChange(of: segmentedControlTag) { tag in
+			processingExplo(categoryTag: tag)
+		}
+		.opacity(segmentedControlOpacity)
+		
 	}
 	
 	private func switchExploState() -> some View {
@@ -118,15 +157,32 @@ struct ExplorerView: View {
 	private func starIsTapped() {
 		// - TODO: utiliser une enum pour rendre les state de cet ecran +clairs ?
 		withAnimation {
-			if isExploActive && exploFieldInput.isEmpty {
-				menuOpacity = 0.0
-				isExploActive = false
+			if displayExploBar && exploFieldInput.isEmpty {
+				backAction()
 			} else {
 				processingExplo(categoryTag: segmentedControlTag)
-				menuOpacity = 1.0
-				isExploActive = true
+				exploBarOpacity = 1.0
+				displayExploBar = true
 				exploFieldFocused.toggle()
 			}
+		}
+	}
+	
+	private func backAction() {
+		exploFieldInput = ""
+		exploResults = []
+		explo.reset()
+		exploFieldFocused = false
+		displayExploBar = false
+		exploBarOpacity = 0.0
+	}
+	
+	private func showFiltersIsTapped() {
+//		defer { displaySegmentedControl.toggle() }
+		// - TODO: improve animation with a vertical move effect
+		withAnimation {
+			segmentedControlOpacity =  displaySegmentedControl ? 0.0 : 1.0
+			displaySegmentedControl.toggle()
 		}
 	}
 	
@@ -150,7 +206,7 @@ struct ExplorerView: View {
 	}
 	
 	private func getStarText() -> StarText {
-		if !isExploActive {
+		if !displayExploBar {
 			return .showMenu
 		} else if isDeleteUp {
 			return .launchExplo
