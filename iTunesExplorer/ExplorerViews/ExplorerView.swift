@@ -10,18 +10,25 @@ import SwiftUI
 struct ExplorerView: View {
 	@State private var exploResults = [ExploResult]()
 	@State private var showingAlert = false
-	@FocusState private var exploFieldFocused: Bool
-	@State private var exploFieldInput:String = ""
-	@State private var segmentedControlTag = 0
+//	@FocusState private var exploFieldFocused: Bool
+	
+	
+	@State private var exploFieldInput:String = "" // keep here
+	
+	@State private var segmentedControlTag = 0 // keep here
+	
 	@State private var exploBarOpacity = 0.0
 	@State private var segmentedControlOpacity = 0.0
 	
 	@StateObject private var explo = ExploUsingCombine()
 	@State private var displayExploBar: Bool = false
-	@State private var displaySegmentedControl: Bool = false
+//	@State private var displaySegmentedControl: Bool = false
+	
+	@State private var textFieldShouldFocus: Bool = true
 	
 	private var isDeleteUp: Bool {
-		(explo.state != .notSearchedYet || exploFieldFocused == true ) && !exploFieldInput.isEmpty
+		//(explo.state != .notSearchedYet || textFieldShouldFocus == true ) &&
+		!exploFieldInput.isEmpty
 	}
 	
     var body: some View {
@@ -30,16 +37,37 @@ struct ExplorerView: View {
 			VStack {
 				if displayExploBar {
 					VStack {
-//						ExplorerTextFieldView()
-//							.padding(.bottom, 12)
-						exploFieldStackView
+						ExplorerTextFieldView(
+							textInput: $exploFieldInput,
+							textFieldShouldFocus: $textFieldShouldFocus,
+							textIsSubmit: prepareProcessingExplo,
+							segmentedControlTag: $segmentedControlTag,
+							backAction: backAction
+						)
 							.padding(.bottom, 12)
-						if displaySegmentedControl {
-							segmentedControlView
+						
+						// try Focus Button
+						Button {
+							textFieldShouldFocus.toggle()
+						} label: {
+							Text("textFieldShouldFocus is : \(String(textFieldShouldFocus))")
 						}
+
+						
+						
+//						exploFieldStackView
+//							.padding(.bottom, 12)
+//						if displaySegmentedControl {
+//							segmentedControlView
+//						}
 					}
 					// TODO : - don't forget putting back the alert after textfield rework
 					.opacity(exploBarOpacity)
+					.alert("Network Issue", isPresented: $showingAlert) {
+						Button("Ok", role: .cancel) { showingAlert = false }
+					} message: {
+						Text("Please, check your network settings and retry.")
+					}
 				}
 				
 				switchExploState()
@@ -50,6 +78,7 @@ struct ExplorerView: View {
 	}
 
     // - MARK: ViewBuilders
+	/*
 	@ViewBuilder
 	private var exploFieldStackView: some View {
 		// - TODO: make custom Style for same images/button
@@ -106,7 +135,9 @@ struct ExplorerView: View {
 			.cornerRadius(12.0)
 		}
 	}
+	*/
 	
+	/*
 	@ViewBuilder
 	private var segmentedControlView: some View {
 		Picker("Explo search filter", selection: $segmentedControlTag) {
@@ -122,6 +153,7 @@ struct ExplorerView: View {
 		.opacity(segmentedControlOpacity)
 		
 	}
+	*/
 	
 	private func switchExploState() -> some View {
 		VStack(spacing: 0) {
@@ -139,13 +171,18 @@ struct ExplorerView: View {
 	}
 	
 	// - MARK: Private Methods
-	private func processingExplo(categoryTag: Int) {
-		guard let category = ExploUsingCombine.Category(rawValue: categoryTag) else {
-            // - TODO: utiliser un log error ou un fatal error ici au lieu du print ?
-			print("Error segmented control - tag = \(categoryTag)")
+	
+	private func prepareProcessingExplo() {
+		processingExplo(input: exploFieldInput, tag: segmentedControlTag)
+	}
+	
+	private func processingExplo(input:String, tag: Int) {
+		guard let category = ExploUsingCombine.Category(rawValue: tag) else {
+			// - TODO: utiliser un log error ou un fatal error ici au lieu du print ?
+			print("Error segmented control - tag = \(tag)")
 			return
 		}
-		explo.performExplo(for: exploFieldInput, category: category) { success in
+		explo.performExplo(for: input, category: category) { success in
 			if !success {
 				showingAlert = true
 			} else {
@@ -153,20 +190,38 @@ struct ExplorerView: View {
 					exploResults = list
 				}
 			}
-			exploFieldFocused = false
+			hideKeyboard()
 		}
 	}
+	
+//	private func processingExplo(categoryTag: Int) {
+//		guard let category = ExploUsingCombine.Category(rawValue: categoryTag) else {
+//            // - TODO: utiliser un log error ou un fatal error ici au lieu du print ?
+//			print("Error segmented control - tag = \(categoryTag)")
+//			return
+//		}
+//		explo.performExplo(for: exploFieldInput, category: category) { success in
+//			if !success {
+//				showingAlert = true
+//			} else {
+//				if case .results(let list) = explo.state {
+//					exploResults = list
+//				}
+//			}
+//			exploFieldFocused = false
+//		}
+//	}
 	
 	private func starIsTapped() {
 		// - TODO: utiliser une enum pour rendre les state de cet ecran +clairs ?
 		withAnimation {
 			if displayExploBar && exploFieldInput.isEmpty {
 				backAction()
+			} else if displayExploBar && !exploFieldInput.isEmpty{
+				prepareProcessingExplo()
 			} else {
-				processingExplo(categoryTag: segmentedControlTag)
 				exploBarOpacity = 1.0
 				displayExploBar = true
-				exploFieldFocused.toggle()
 			}
 		}
 	}
@@ -175,11 +230,12 @@ struct ExplorerView: View {
 		exploFieldInput = ""
 		exploResults = []
 		explo.reset()
-		exploFieldFocused = false
+		textFieldShouldFocus = false
 		displayExploBar = false
 		exploBarOpacity = 0.0
 	}
 	
+	/*
 	private func showFiltersIsTapped() {
 //		defer { displaySegmentedControl.toggle() }
 		// - TODO: improve animation with a vertical move effect
@@ -188,13 +244,14 @@ struct ExplorerView: View {
 			displaySegmentedControl.toggle()
 		}
 	}
+	*/
 	
-	private func deleteIsTapped() {
-		exploFieldInput = ""
-		exploFieldFocused = true
-		exploResults = []
-		explo.reset()
-	}
+//	private func deleteIsTapped() {
+//		exploFieldInput = ""
+//  //	exploFieldFocused = true
+//		exploResults = []
+//		explo.reset()
+//	}
 	
 	private enum StarText: CustomStringConvertible {
 		case showMenu, hideMenu, launchExplo
@@ -203,7 +260,7 @@ struct ExplorerView: View {
 			switch self {
 			case .showMenu : return "Tap me !"
 			case .hideMenu : return "Back"
-			case .launchExplo : return "Search"
+			case .launchExplo : return "Explore !"
 			}
 		}
 	}
@@ -225,3 +282,13 @@ struct ExplorerView: View {
 //#Preview {
 //    ExplorerView()
 //}
+
+
+
+#if canImport(UIKit)
+extension View {
+	func hideKeyboard() {
+		UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+	}
+}
+#endif
