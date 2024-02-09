@@ -20,14 +20,19 @@
 
 <br/>
 
-<div style="display: flex; align-items: center;">
-    <img src="./ressources/startAppicon.gif" alt="start screen" style="width: 320px;">
-    <div style="margin-left: 20px;">
-        <h2><b>Start it easy</b></h2>
-        <p> I chose to added this star-shapped button, gently animated as a welcome screen.
-        </p>
-    </div>
-</div>
+<table style="border: 0px;">
+    <tr>
+        <td >
+            <img src="./ressources/startAppicon.gif" alt="start screen" style="width: 280px;">
+        </td>
+        <td>
+            <div style="margin-left: 20px; width:260px;">
+                <h2><b>Start it easy</b></h2>
+                <p> I chose to added this star-shapped button, gently animated as a welcoming screen.</p>
+            </div>
+        </td>
+    </tr>
+</table>
 
 <br/>
 
@@ -73,14 +78,19 @@ Here the expected thing will be to use the **`combine`** framework to manage the
 
 <br/>
 
-<div style="display: flex; align-items: center;">
-    <img src="./ressources/exploDemo.gif" alt="use demo" style="width: 320px;">
-    <div style="margin-left: 20px;">
-        <h2><b>Let's explore</b></h2>
-        <p> Here's a fetching demo. The search can be filtered by category thanks to the segmented control.
-        </p>
-    </div>
-</div>
+<table style="border: 0px;">
+    <tr>
+        <td >
+            <img src="./ressources/exploDemo.gif" alt="use demo" style="width: 280px;">
+        </td>
+        <td>
+            <div style="margin-left: 20px; width:260px;">
+                <h2><b>Let's explore</b></h2>
+                <p> Here's a fetching demo. The search can be filtered by category thanks to the segmented control.</p>
+            </div>
+        </td>
+    </tr>
+</table>
 
 <br/>
 
@@ -111,14 +121,23 @@ final class performExploTest: XCTestCase {
 }
 ```
 
-<div style="display: flex; align-items: center;">
-    <div style="margin-right: 20px;">
-        <h2><b>Color schemes</b></h2>
-        <p> Create <b>ColorSet</b> in Xcode Assets make the switching between color mode easy.
-        </p>
-    </div>
-    <img src="./ressources/appIcon%2BcolorScheme.gif" alt="showing light and dark mode" style="width: 320px;">
-</div>
+<br/>
+
+<table style="border: 0px;">
+    <tr>
+        <td >
+            <div style="margin-left: 20px; width:260px;">
+                <h2><b>Color schemes</b></h2>
+                <p> Create <b>ColorSet</b> in Xcode Assets make the switching between color mode easy.</p>
+            </div>
+        </td>
+        <td>
+            <img src="./ressources/appIcon%2BcolorScheme.gif" alt="showing light and dark mode" style="width: 280px;">
+        </td>
+    </tr>
+</table>
+
+<br/>
 
 ## **Swift Packages**
 

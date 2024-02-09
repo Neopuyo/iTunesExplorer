@@ -16,22 +16,11 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 
 - **@Home**
   - [X] créer de la Doc avec DocC -> Ok ça fonctionne
-  - [ ] piste pour le pb de swiftPackage import swiftUI   
-  ce [link](https://www.appsloveworld.com/swift/100/75/cannot-find-swiftui-or-combine-types-when-building-swift-package-for-any-ios-dev) puis link vers [reddit](https://www.reddit.com/r/SwiftUI/comments/l5mt0b/cannot_build_for_any_ios_device_arm64_as_doesnt/?rdt=44959)
-
-  ```swift
-  #if canImport(SwiftUI) && (!os(iOS) || arch(arm64))
-  
-  import SwiftUI
-
-  // []...]
-
-  #endif
-  ```
-
+  - [O] piste pour le pb de swiftPackage import swiftUI   
+  ce [link](https://www.appsloveworld.com/swift/100/75/cannot-find-swiftui-or-combine-types-when-building-swift-package-for-any-ios-dev) puis link vers [reddit](https://www.reddit.com/r/SwiftUI/comments/l5mt0b/cannot_build_for_any_ios_device_arm64_as_doesnt/?rdt=44959) **=> pas mieux !**
   - [ ] si ok, exporter la doc et [heberger avec github](https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/publishing-to-github-pages/)
 - **`@42`**
-  - [ ] Faire la 1ere page getting started nickel
+  - [X] Faire la 1ere page getting started nickel
   - [ ] Faire un sommaire/topic (voir vidéo apple doc)
   - [ ] Voir vidéo apple doc pour exporter la docC vers github
 
@@ -49,14 +38,18 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
   1. [X] TODO ExplorerView voir si peur refract utilisant viewbuilder (cf lien)
   2. [ ] TODO utiliser enum pour gérer plus clairement les etats du star button
 
+- [ ] TODO utiliser enum pour gérer plus clairement les etats du star button
 - [ ] link mon compte firefox -> sur mon windows + mac
-- [ ] faire image 1000x500px logo + nom ItunesExplorer  pour le readme
-- [ ] integrer combine > WIP cleaning
-
-  -  video wwdc19 combine in pratice 5min10  
-  -  [switthinkusefull video](https://www.youtube.com/watch?v=fdxFp5vU6MQ) + screens dans ./ressources  
-- [ ] Virer la dependency pour tap gesture des record simulator  
+- [X] faire image 1000x500px logo + nom ItunesExplorer  pour le readme **-> chounky**
+1. [ ] clean la partie combine > **WIP cleaning** 
+    -  video wwdc19 combine in pratice 5min10  
+    -  [switthinkusefull video](https://www.youtube.com/watch?v=fdxFp5vU6MQ) + screens dans ./ressources  
+2. [ ] Virer la dependency pour tap gesture des record simulator  
 Tester d'utiliser : `defaults write com.apple.iphonesimulator ShowSingleTouches 1`
+
+3. [ ] Prendre des screens de l'UI actuelle (section rework UI du readme)
+
+4. [ ] Branche reworkUI + lister/hierarchiser les etapes a effectuer
 
 - [ ] faire un *Unit Test_`ok`* + un UItest !
 
@@ -73,6 +66,7 @@ Tester d'utiliser : `defaults write com.apple.iphonesimulator ShowSingleTouches 
 - [X] Combine (une fois implementé) (revoir les titres fetch machin)
 - [X] SwiftPackage Manager
 - [X] Faire sommaire
+- [ ] Une fois UI a jour faire une section rework uI dans le readme
 - [ ] Autres ? (une fois un UITest fait ? ou truc qui sort du lot)
 
 <br/>
