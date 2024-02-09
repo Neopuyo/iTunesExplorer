@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D051D1B2B6D339300565FF3 /* ShowTime in Frameworks */ = {isa = PBXBuildFile; productRef = 1D051D1A2B6D339300565FF3 /* ShowTime */; };
 		1D0B48C12B6F9D5300706527 /* performExploTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B48C02B6F9D5300706527 /* performExploTest.swift */; };
+		1D24027B2B764E8F00A02938 /* Explo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D24027A2B764E8F00A02938 /* Explo.swift */; };
+		1D24027D2B764EA800A02938 /* ExploResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D24027C2B764EA800A02938 /* ExploResult.swift */; };
 		1D25642B2B657A940079653D /* ExplorerGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D25642A2B657A940079653D /* ExplorerGradient.swift */; };
 		1D25642D2B65852D0079653D /* ListLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D25642C2B65852D0079653D /* ListLoadingView.swift */; };
 		1D25642F2B658F6C0079653D /* ListNotSearchedYetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D25642E2B658F6C0079653D /* ListNotSearchedYetView.swift */; };
 		1D2BF8882B6CE51E003C7F5B /* ListNoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2BF8872B6CE51E003C7F5B /* ListNoResultView.swift */; };
 		1D428C4B2B5D23F2007AB501 /* Neopuyo in Frameworks */ = {isa = PBXBuildFile; productRef = 1D428C4A2B5D23F2007AB501 /* Neopuyo */; };
-		1D62D6122B5A3C3800E48218 /* Explo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62D6102B5A3C3700E48218 /* Explo.swift */; };
-		1D62D6132B5A3C3800E48218 /* ExploResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62D6112B5A3C3700E48218 /* ExploResult.swift */; };
 		1D62D6162B5A3C4400E48218 /* notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D62D6152B5A3C4400E48218 /* notes.md */; };
 		1DA0E32A2B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA0E3292B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift */; };
 		1DA0E32D2B63E93700CF4F8C /* ListExploResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA0E32C2B63E93700CF4F8C /* ListExploResultView.swift */; };
@@ -42,12 +41,12 @@
 /* Begin PBXFileReference section */
 		1D0B48B72B6F9B8F00706527 /* iTunesExplorerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesExplorerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D0B48C02B6F9D5300706527 /* performExploTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = performExploTest.swift; sourceTree = "<group>"; };
+		1D24027A2B764E8F00A02938 /* Explo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explo.swift; sourceTree = "<group>"; };
+		1D24027C2B764EA800A02938 /* ExploResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploResult.swift; sourceTree = "<group>"; };
 		1D25642A2B657A940079653D /* ExplorerGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorerGradient.swift; sourceTree = "<group>"; };
 		1D25642C2B65852D0079653D /* ListLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLoadingView.swift; sourceTree = "<group>"; };
 		1D25642E2B658F6C0079653D /* ListNotSearchedYetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNotSearchedYetView.swift; sourceTree = "<group>"; };
 		1D2BF8872B6CE51E003C7F5B /* ListNoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNoResultView.swift; sourceTree = "<group>"; };
-		1D62D6102B5A3C3700E48218 /* Explo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explo.swift; sourceTree = SOURCE_ROOT; };
-		1D62D6112B5A3C3700E48218 /* ExploResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploResult.swift; sourceTree = SOURCE_ROOT; };
 		1D62D6152B5A3C4400E48218 /* notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = notes.md; sourceTree = "<group>"; };
 		1DA0E3292B63C2F600CF4F8C /* ButtonStyle+ScaleOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+ScaleOnTap.swift"; sourceTree = "<group>"; };
 		1DA0E32C2B63E93700CF4F8C /* ListExploResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExploResultView.swift; sourceTree = "<group>"; };
@@ -75,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D051D1B2B6D339300565FF3 /* ShowTime in Frameworks */,
 				1D428C4B2B5D23F2007AB501 /* Neopuyo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,9 +101,9 @@
 		1D4097EC2B5A39CF0044B609 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1D62D6102B5A3C3700E48218 /* Explo.swift */,
+				1D24027A2B764E8F00A02938 /* Explo.swift */,
 				1DAC70E52B71166400AF4169 /* ExploUsingCombine.swift */,
-				1D62D6112B5A3C3700E48218 /* ExploResult.swift */,
+				1D24027C2B764EA800A02938 /* ExploResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,7 +218,6 @@
 			name = iTunesExplorer;
 			packageProductDependencies = (
 				1D428C4A2B5D23F2007AB501 /* Neopuyo */,
-				1D051D1A2B6D339300565FF3 /* ShowTime */,
 			);
 			productName = iTunesExplorer;
 			productReference = 1DEDAE792B557968009E7F22 /* iTunesExplorer.app */;
@@ -256,7 +253,6 @@
 			mainGroup = 1DEDAE702B557968009E7F22;
 			packageReferences = (
 				1D428C492B5D23F1007AB501 /* XCRemoteSwiftPackageReference "Neopuyo" */,
-				1D051D192B6D339300565FF3 /* XCRemoteSwiftPackageReference "ShowTime" */,
 			);
 			productRefGroup = 1DEDAE7A2B557968009E7F22 /* Products */;
 			projectDirPath = "";
@@ -308,13 +304,13 @@
 				1D2BF8882B6CE51E003C7F5B /* ListNoResultView.swift in Sources */,
 				1D25642F2B658F6C0079653D /* ListNotSearchedYetView.swift in Sources */,
 				1DA0E32D2B63E93700CF4F8C /* ListExploResultView.swift in Sources */,
+				1D24027D2B764EA800A02938 /* ExploResult.swift in Sources */,
+				1D24027B2B764E8F00A02938 /* Explo.swift in Sources */,
 				1DEDAE7F2B557968009E7F22 /* ExplorerView.swift in Sources */,
-				1D62D6122B5A3C3800E48218 /* Explo.swift in Sources */,
 				1D25642D2B65852D0079653D /* ListLoadingView.swift in Sources */,
 				1DDDE24D2B5AC86D001E5A98 /* DetailExploResultView.swift in Sources */,
 				1DAC70E62B71166400AF4169 /* ExploUsingCombine.swift in Sources */,
 				1DEDAE7D2B557968009E7F22 /* iTunesExplorerApp.swift in Sources */,
-				1D62D6132B5A3C3800E48218 /* ExploResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,14 +575,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1D051D192B6D339300565FF3 /* XCRemoteSwiftPackageReference "ShowTime" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KaneCheshire/ShowTime.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.5.3;
-			};
-		};
 		1D428C492B5D23F1007AB501 /* XCRemoteSwiftPackageReference "Neopuyo" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Neopuyo/Neopuyo.git";
@@ -598,11 +586,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1D051D1A2B6D339300565FF3 /* ShowTime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1D051D192B6D339300565FF3 /* XCRemoteSwiftPackageReference "ShowTime" */;
-			productName = ShowTime;
-		};
 		1D428C4A2B5D23F2007AB501 /* Neopuyo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1D428C492B5D23F1007AB501 /* XCRemoteSwiftPackageReference "Neopuyo" */;

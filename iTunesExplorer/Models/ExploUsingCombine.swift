@@ -91,6 +91,15 @@ final class ExploUsingCombine : ObservableObject {
 		guard !text.isEmpty else { return }
 		//dataTask?.cancel()
 		
+		// TODO : extract/clean + vérifier si bonne pratique
+		if state == .loading {
+			cancellables.forEach {
+				print("Request \($0.hashValue) canceled")
+				$0.cancel()
+			}
+		}
+
+		
 		state = .loading
 		
 		let url = iTunesURL(searchText: text, category: category)
@@ -125,7 +134,7 @@ final class ExploUsingCombine : ObservableObject {
 				case .finished:
 					success = true
 				case .failure(let error):
-					if let cancelError = error as? ExploError {
+					if let _ = error as? ExploError {
 						print("## explo canceled")
 					}
 				}

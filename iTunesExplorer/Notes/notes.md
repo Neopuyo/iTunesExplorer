@@ -41,7 +41,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 - [ ] TODO utiliser enum pour gérer plus clairement les etats du star button
 - [ ] link mon compte firefox -> sur mon windows + mac
 - [X] faire image 1000x500px logo + nom ItunesExplorer  pour le readme **-> chounky**
-1. [ ] clean la partie combine > **WIP cleaning** 
+1. [ ] clean la partie combine > **WIP cleaning** + Issue => on a plus la possibilité de cancel si on spam le segmented control par exemple
     -  video wwdc19 combine in pratice 5min10  
     -  [switthinkusefull video](https://www.youtube.com/watch?v=fdxFp5vU6MQ) + screens dans ./ressources  
 2. [ ] Virer la dependency pour tap gesture des record simulator  
@@ -58,6 +58,8 @@ Tester d'utiliser : `defaults write com.apple.iphonesimulator ShowSingleTouches 
 **`@42`**
 
   1. [ ] check si je peux chercher des solutions sur les "TO DO" en cours
+  2. [ ] combine rework and cleaning -> comment ajouter la possibilité cancellable comme avant
+    [checkCancellation / cancellable article medium](https://medium.com/appgrid/handling-cancellation-in-combine-swift-with-example-1bc3ec42a163)
   2. [X] essayer de voir ce que je peux faire pour tester perform explo
   
 &emsp; **Parties `"highlighted"` à ajouter au readme :**  

@@ -1,6 +1,6 @@
 # iTunesExplorer
 
-![iTunesExplorer AppIcon](/ressources/placeholder-1000x500.png)
+![iTunesExplorer AppIcon](./ressources/placeholder-1000x500.png)
 
 **An iOS learning support mini-app**  
 &emsp; Based on the StoreSearch tutorial from the *[UIKit Apprentice](https://www.kodeco.com/books/uikit-apprentice/v10.0), by Fahim Farook*.  
