@@ -30,12 +30,15 @@ struct ExplorerView: View {
 			VStack {
 				if displayExploBar {
 					VStack {
+//						ExplorerTextFieldView()
+//							.padding(.bottom, 12)
 						exploFieldStackView
 							.padding(.bottom, 12)
 						if displaySegmentedControl {
 							segmentedControlView
 						}
 					}
+					// TODO : - don't forget putting back the alert after textfield rework
 					.opacity(exploBarOpacity)
 				}
 				

@@ -10,6 +10,7 @@
 		1D0B48C12B6F9D5300706527 /* performExploTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B48C02B6F9D5300706527 /* performExploTest.swift */; };
 		1D24027B2B764E8F00A02938 /* Explo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D24027A2B764E8F00A02938 /* Explo.swift */; };
 		1D24027D2B764EA800A02938 /* ExploResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D24027C2B764EA800A02938 /* ExploResult.swift */; };
+		1D24027F2B76724D00A02938 /* ExplorerTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D24027E2B76724D00A02938 /* ExplorerTextFieldView.swift */; };
 		1D25642B2B657A940079653D /* ExplorerGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D25642A2B657A940079653D /* ExplorerGradient.swift */; };
 		1D25642D2B65852D0079653D /* ListLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D25642C2B65852D0079653D /* ListLoadingView.swift */; };
 		1D25642F2B658F6C0079653D /* ListNotSearchedYetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D25642E2B658F6C0079653D /* ListNotSearchedYetView.swift */; };
@@ -43,6 +44,7 @@
 		1D0B48C02B6F9D5300706527 /* performExploTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = performExploTest.swift; sourceTree = "<group>"; };
 		1D24027A2B764E8F00A02938 /* Explo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explo.swift; sourceTree = "<group>"; };
 		1D24027C2B764EA800A02938 /* ExploResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploResult.swift; sourceTree = "<group>"; };
+		1D24027E2B76724D00A02938 /* ExplorerTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerTextFieldView.swift; sourceTree = "<group>"; };
 		1D25642A2B657A940079653D /* ExplorerGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorerGradient.swift; sourceTree = "<group>"; };
 		1D25642C2B65852D0079653D /* ListLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLoadingView.swift; sourceTree = "<group>"; };
 		1D25642E2B658F6C0079653D /* ListNotSearchedYetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNotSearchedYetView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				1DEDAE7E2B557968009E7F22 /* ExplorerView.swift */,
+				1D24027E2B76724D00A02938 /* ExplorerTextFieldView.swift */,
 				1D25642E2B658F6C0079653D /* ListNotSearchedYetView.swift */,
 				1D25642C2B65852D0079653D /* ListLoadingView.swift */,
 				1D2BF8872B6CE51E003C7F5B /* ListNoResultView.swift */,
@@ -304,6 +307,7 @@
 				1D2BF8882B6CE51E003C7F5B /* ListNoResultView.swift in Sources */,
 				1D25642F2B658F6C0079653D /* ListNotSearchedYetView.swift in Sources */,
 				1DA0E32D2B63E93700CF4F8C /* ListExploResultView.swift in Sources */,
+				1D24027F2B76724D00A02938 /* ExplorerTextFieldView.swift in Sources */,
 				1D24027D2B764EA800A02938 /* ExploResult.swift in Sources */,
 				1D24027B2B764E8F00A02938 /* Explo.swift in Sources */,
 				1DEDAE7F2B557968009E7F22 /* ExplorerView.swift in Sources */,
