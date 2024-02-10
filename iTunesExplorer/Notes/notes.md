@@ -118,8 +118,56 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 
   1. [ ] check si je peux chercher des solutions sur les "TO DO" en cours
     . animayion verticale lors du pop / depop du segmented control
+
+    ```
+    // tester
+    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
+    ```
   2. [ ] combine rework and cleaning -> comment ajouter la possibilité cancellable comme avant
     [checkCancellation / cancellable article medium](https://medium.com/appgrid/handling-cancellation-in-combine-swift-with-example-1bc3ec42a163)
+
+
+ 
+ ```swift
+ // tester ceci :
+ .handleEvents(receiveCancel: {
+                print("Synced objects: CANCELED!")
+            })
+ ```
+
+ ```swift
+ // ici il y a peut etre ce qui me manquait pour stocker le publisher afin de l'annuler
+ import Combine
+
+class DataFetcher {
+    var cancellable: AnyCancellable?
+
+    func fetchData() -> AnyPublisher<Data, Error> {
+        // Annuler l'appel précédent s'il existe
+        cancellable?.cancel()
+
+        let url = URL(string: "https://example.com/data")!
+        let publisher = URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .eraseToAnyPublisher()
+
+        // Stocker la souscription dans la propriété cancellable
+        cancellable = publisher.sink(receiveCompletion: { _ in
+            // Réinitialiser cancellable après que la tâche est terminée (complétée ou échouée)
+            self.cancellable = nil
+        }, receiveValue: { _ in })
+
+        return publisher
+    }
+}
+/*
+Dans ce code, nous avons ajouté une étape pour initialiser la propriété cancellable avec la souscription retournée par sink. sink est utilisé pour consommer les valeurs émises par le publisher et gérer la fin de la tâche (complétée ou échouée). Après que la tâche est terminée, nous réinitialisons la propriété cancellable à nil, ce qui permet de libérer la mémoire de la souscription précédente.
+
+Ainsi, maintenant, chaque fois que vous appelez fetchData, l'appel précédent est annulé et une nouvelle souscription est créée, assurant qu'un seul appel de fetchData est actif à la fois.*/
+```
+
+> *[article medium ou le publisher est return aussi](https://medium.com/@ganeshrajugalla/swiftui-async-await-escaping-combine-60f4b847520c)* 
+
   2. [X] essayer de voir ce que je peux faire pour tester perform explo
   
 &emsp; **Parties `"highlighted"` à ajouter au readme :**  
