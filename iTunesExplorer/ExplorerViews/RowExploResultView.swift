@@ -43,7 +43,7 @@ struct RowExploResultView: View {
 					Text(!exploResult.artist.isEmpty ? exploResult.artist : "Unknown")
 					Text(!exploResult.artist.isEmpty ? exploResult.type : "")
 						.fontWeight(.light)
-					Spacer() // - NOTE: important to spread horizontally row to tapGesture it
+					Spacer() // - NOTE: important to spread horizontally row to  tapGesture it
 				}
 				.font(.caption)
 				.foregroundStyle(Color("Grey50"))

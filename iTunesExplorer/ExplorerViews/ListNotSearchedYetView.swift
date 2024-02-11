@@ -29,24 +29,24 @@ struct ListNotSearchedYetView: View {
 					Button {
 						onTapCompletion()
 					} label: {
-						Image(systemName: "star.fill")
-							.resizable()
-							.scaledToFit()
-							.foregroundStyle(Color.complementary)
-							.frame(width: 120, height: 120)
-							.overlay {
-								Text(starText)
-									.foregroundStyle(Color.accentColor.opacity(0.6))
-									.font(.caption)
-									.transaction { transaction in
-										transaction.animation = nil
-									}
-							}
-							.rotationEffect(Angle(degrees: rotation))
-							.animation(
-								.linear(duration: 1.2)
-								.repeatForever(autoreverses: true),
-								value: rotation)
+//						Image(systemName: "location.north.fill")
+//							.resizable()
+//							.scaledToFit()
+						exploStarIconView
+//							.frame(width: 120, height: 120) // to delete ?
+//							.overlay {
+//								Text(starText)
+//									.foregroundStyle(Color.accentColor.opacity(0.6))
+//									.font(.caption)
+//									.transaction { transaction in
+//										transaction.animation = nil
+//									}
+//							}
+//							.rotationEffect(Angle(degrees: rotation))
+//							.animation(
+//								.linear(duration: 1.2)
+//								.repeatForever(autoreverses: true),
+//								value: rotation)
 					}
 					.buttonStyle(ScaleOnTap(capsuled: false))
 				}
@@ -58,6 +58,35 @@ struct ListNotSearchedYetView: View {
 			rotation = 7.5
 		}
     }
+	
+	@ViewBuilder
+	private var exploStarIconView: some View {
+		ZStack {
+			Image(systemName: "location.north")
+				.resizable()
+				.scaledToFit()
+				.frame(width: 120, height: 120)
+				.foregroundStyle(Color.complementary)
+				.border(.pink)
+			
+			
+			Image(systemName: "location.north")
+				.resizable()
+				.rotationEffect(Angle(degrees: 69.5))
+				.scaledToFit()
+				.foregroundStyle(Color.complementary).opacity(0.6)
+				.frame(width: 120, height: 120)
+				.border(.yellow)
+			
+			Rectangle()
+				.fill(Color.black)
+				.frame(width:200, height: 2)
+				
+			
+		}
+		
+		
+	}
 	
 }
 
