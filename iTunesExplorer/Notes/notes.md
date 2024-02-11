@@ -104,11 +104,11 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 3. [X] Prendre des screens de l'UI actuelle (section rework UI du readme)
 
 4. [ ] Branche reworkUI + lister/hierarchiser les etapes a effectuer
-	1. searchBar 1 element avec loupe + micro dedans + 2 boutons au desssus
-	2. Boutton dessus back (back) + (filtre) showCategory(doit faire apparaitre/enlever le seg control)
-	3. La zone de tap gesture d'une row c'est toute la row 
-	4. rendre le bouton moicro reelement fonctionnel
-	5. changer le style de l'étoile avec SFSymbol location.north.fill
+	1. [X] searchBar 1 element avec loupe + micro dedans + 2 boutons au desssus
+	2. [X] Boutton dessus back (back) + (filtre) showCategory(doit faire apparaitre/enlever le seg control)
+	3. [X] La zone de tap gesture d'une row c'est toute la row 
+	4. [ ] rendre le bouton moicro reelement fonctionnel
+	5. [ ] changer le style de l'étoile avec SFSymbol location.north.fill
 
 - [ ] faire un *Unit Test_`ok`* + un UItest !
 

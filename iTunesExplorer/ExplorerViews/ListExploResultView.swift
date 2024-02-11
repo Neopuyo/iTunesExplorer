@@ -16,6 +16,7 @@ struct ListExploResultView: View {
     var body: some View {
 		List(exploResults) { exploResult in
 			RowExploResultView(exploResult: exploResult)
+				.border(.pink)
 				.onTapGesture {
 					exploResultTargeted = exploResult
 				}

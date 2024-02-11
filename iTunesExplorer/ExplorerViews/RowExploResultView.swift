@@ -11,7 +11,7 @@ struct RowExploResultView: View {
 	
 	let exploResult: ExploResult
 	
-    var body: some View {
+	var body: some View {
 		HStack {
 			AsyncImage(url: URL(string: exploResult.imageSmall), transaction: Transaction(animation: .easeOut)) { phase in
 				switch phase {
@@ -43,6 +43,7 @@ struct RowExploResultView: View {
 					Text(!exploResult.artist.isEmpty ? exploResult.artist : "Unknown")
 					Text(!exploResult.artist.isEmpty ? exploResult.type : "")
 						.fontWeight(.light)
+					Spacer() // - NOTE: important to spread horizontally row to tapGesture it
 				}
 				.font(.caption)
 				.foregroundStyle(Color("Grey50"))
@@ -50,7 +51,7 @@ struct RowExploResultView: View {
 			.lineLimit(1)
 			.truncationMode(.tail)
 		}
-    }
+	}
 }
 
 //#Preview {
