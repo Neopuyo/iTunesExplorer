@@ -30,7 +30,12 @@ final class ExploUsingCombine : ObservableObject {
 		case cancelled
 	}
 	
-	enum State: Equatable {
+	enum State: Equatable, CustomStringConvertible {
+		case notSearchedYet
+		case loading
+		case noResults
+		case results([ExploResult])
+		
 		static func == (lhs: ExploUsingCombine.State, rhs: ExploUsingCombine.State) -> Bool {
 			switch (lhs, rhs) {
 			case (.notSearchedYet, .notSearchedYet):
@@ -52,10 +57,15 @@ final class ExploUsingCombine : ObservableObject {
 			}
 		}
 		
-		  case notSearchedYet
-		  case loading
-		  case noResults
-		  case results([ExploResult])
+		var description: String {
+			switch self {
+			case .notSearchedYet: return "not searched yet"
+			case .loading: return "loading"
+			case .noResults: return "no result found"
+			case .results(let results):
+				return "\(results.count) results found"
+			}
+		}
 	}
 
 	@Published private(set) var state: State = .notSearchedYet
@@ -111,6 +121,9 @@ final class ExploUsingCombine : ObservableObject {
 			.dataTaskPublisher(for: url)
 			.subscribe(on: DispatchQueue.global(qos: .background)) // already by default
 			.receive(on: DispatchQueue.main)
+			.handleEvents(receiveCancel: {
+						   print("publisher for url : \(url) CANCELED!")
+					   })
 			.tryMap { (data, rep) -> Data in
 				guard 
 					let httpRep = rep as? HTTPURLResponse,

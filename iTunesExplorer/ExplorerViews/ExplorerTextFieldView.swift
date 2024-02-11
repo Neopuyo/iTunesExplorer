@@ -30,6 +30,8 @@ struct ExplorerTextFieldView: View {
 		// - TODO: make custom Style for same images/button
 		VStack {
 			VStack {
+				
+				// Back & Filters Buttons
 				HStack {
 					Button {
 						
@@ -51,6 +53,7 @@ struct ExplorerTextFieldView: View {
 					}
 				}
 				
+				// Explo Bar text Field
 				HStack {
 					Image(systemName: "magnifyingglass")
 						.foregroundStyle(.accent)
@@ -63,15 +66,14 @@ struct ExplorerTextFieldView: View {
 						.onSubmit {
 							willSubmitInput()
 						}
-						Button {
-							// TODO : set up microphoneButton action
-						} label: {
-							Image(systemName: "mic.circle.fill")
-								.foregroundStyle(.accent)
-								.font(.title)
-								.padding(.trailing)
-						}
-					
+					Button {
+						// TODO : set up microphoneButton action
+					} label: {
+						Image(systemName: "mic.circle.fill")
+							.foregroundStyle(.accent)
+							.font(.title)
+							.padding(.trailing)
+					}
 				}
 				.padding(.vertical, 6)
 				.background(Color.grey50.opacity(0.25))
@@ -82,11 +84,12 @@ struct ExplorerTextFieldView: View {
 				.onChange(of: textFieldShouldFocus) { newValue in
 					exploFieldFocused = newValue
 				}
-				
-				
 			}
+			
+			// Segmented control
 			if displaySegmentedControl {
 				segmentedControlView
+					.transition(.move(edge: .top))
 			}
 		}
 		

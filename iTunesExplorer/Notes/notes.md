@@ -117,7 +117,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 ## **`@42`**
 
   1. [ ] check si je peux chercher des solutions sur les "TO DO" en cours
-    . animayion verticale lors du pop / depop du segmented control
+    . animation verticale lors du pop / depop du segmented control
 
     ```
     // tester
