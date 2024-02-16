@@ -71,7 +71,6 @@ final class ExploUsingCombine : ObservableObject {
 	@Published private(set) var state: State = .notSearchedYet
 	var cancellables = Set<AnyCancellable>()
 	
-	//private var dataTask: URLSessionDataTask?
 
 	// MARK: - Private Methods
 	private func iTunesURL(searchText: String, category: Category) -> URL {
@@ -99,16 +98,10 @@ final class ExploUsingCombine : ObservableObject {
 	// MARK: - Public Methods
 	func performExplo(for text: String, category: Category, callBack: @escaping ExploComplete) {
 		guard !text.isEmpty else { return }
-		//dataTask?.cancel()
-		
-		// TODO : extract/clean + vérifier si bonne pratique
+	
 		if state == .loading {
-			cancellables.forEach {
-				print("Request \($0.hashValue) canceled")
-				$0.cancel()
-			}
+			cancelAll()
 		}
-
 		
 		state = .loading
 		
@@ -119,28 +112,10 @@ final class ExploUsingCombine : ObservableObject {
 		
 		session
 			.dataTaskPublisher(for: url)
-			.subscribe(on: DispatchQueue.global(qos: .background)) // already by default
 			.receive(on: DispatchQueue.main)
-			.handleEvents(receiveCancel: {
-						   print("publisher for url : \(url) CANCELED!")
-					   })
-			.tryMap { (data, rep) -> Data in
-				guard 
-					let httpRep = rep as? HTTPURLResponse,
-					200..<300 ~= httpRep.statusCode
-				else {
-					throw URLError(.badServerResponse)
-				}
-				return data
-			}
+			.tryMap(handleOutput)
 			.decode(type: ResultArray.self, decoder: JSONDecoder())
-			.mapError { error -> Error in
-				if let urlError = error as? URLError, urlError.errorCode == -999 {
-					return ExploError.cancelled
-				} else {
-					return error
-				}
-			}
+			.mapError(mapExploError)
 			.sink { completion in
 				var success = false
 				switch completion {
@@ -158,50 +133,50 @@ final class ExploUsingCombine : ObservableObject {
 				} else {
 					self?.state = .results(resultArray.results.sorted(by: <))
 				}
-			}.store(in: &cancellables)
+			}
+			.store(in: &cancellables)
+	}
 
-		
-//		dataTask = session.dataTask(with: url) { data, response, error in
-//			var newState = State.notSearchedYet /// using a temp state because secondary thread
-//			var success = false
-//			if let error = error as NSError?, error.code == -999 {
-//				print("search was cancelled (error code -999)")
-//				return
-//			}
-//			if let httpResponse = response as? HTTPURLResponse,
-//			   httpResponse.statusCode == 200, let data = data {
-//				
-//				var searchResults = self.parse(data: data)
-//				if searchResults.isEmpty {
-//					newState = .noResults
-//				} else  {
-//					searchResults.sort(by: <)
-//					newState = .results(searchResults)
-//				}
-//				success = true
-//			}
-//			DispatchQueue.main.async {
-//				self.state = newState /// state has to be changed on main thread to prevent data races
-//				completion(success)
-//			}
-//		}
-//		dataTask?.resume()
+	
+	
+	// MARK: - Combine pipeline components
+	private func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
+		guard
+			let httpRep = output.response as? HTTPURLResponse,
+			200..<300 ~= httpRep.statusCode
+		else {
+			throw URLError(.badServerResponse)
+		}
+		return output.data
 	}
 	
-//	func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
-//		
-//	}
+	private func mapExploError(_ error: Error) -> Error {
+		if let urlError = error as? URLError, urlError.errorCode == -999 {
+			return ExploError.cancelled
+		} else {
+			return error
+		}
+	}
+	
+	
+	// MARK: - Private methods
+	private func cancelAll() {
+		cancellables.forEach {
+			// - TODO: dont forget to remove this print
+			print("Request \($0.hashValue) canceled")
+			$0.cancel()
+		}
+	}
 	
 	func cancel() {
 		guard state == .loading else { return }
-		
-		//dataTask?.cancel()
+		cancelAll()
 		state = .notSearchedYet
 	}
 	
 	func reset() {
-		//dataTask?.cancel()
 		state = .notSearchedYet
+		cancelAll()
 	}
 	
 	

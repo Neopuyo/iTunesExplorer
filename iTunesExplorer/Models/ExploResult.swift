@@ -8,7 +8,6 @@
 import Foundation
 
 
-/// [!] valider son utilité finale -> a voir + tard : aller direct a valeur voulue avec combine ?
 final class  ResultArray: Codable {
     var resultCount = 0
     var results = [ExploResult]()
@@ -43,13 +42,12 @@ final class ExploResult: Codable, CustomStringConvertible, Identifiable, Equatab
         case collectionName, collectionViewUrl, collectionPrice
     }
 
-/// [!] besoin ?
-/// operator overloading (swift programming book use static method vs global func outside class scope from other web sources)
+
+// operator overloading (swift programming book use static method vs global func outside class scope from other web sources)
 	 static func < (lhs: ExploResult, rhs: ExploResult) -> Bool {
 	 	return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
 	 }
 	
-	// Equatable requirement
 	static func == (lhs: ExploResult, rhs: ExploResult) -> Bool {
 		return lhs.id == rhs.id
 	}

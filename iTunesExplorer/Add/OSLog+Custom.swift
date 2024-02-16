@@ -7,7 +7,7 @@
 
 import OSLog
 
-/// will need iOS17+ to display corectly logs
+// will need iOS17+ to display corectly logs
 extension Logger {
 	private static var subsystem = "iTunesExplorer"
 

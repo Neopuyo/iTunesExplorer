@@ -7,7 +7,6 @@
 
 import SwiftUI
 import OSLog
-//import Combine // [!] pour etape suivante
 
 
 final class Explo : ObservableObject {
@@ -115,7 +114,7 @@ final class Explo : ObservableObject {
 				success = true
 			}
 			DispatchQueue.main.async {
-				self.state = newState /// state has to be changed on main thread to prevent data races
+				self.state = newState // state has to be changed on main thread to prevent data races
 				completion(success)
 			}
 		}

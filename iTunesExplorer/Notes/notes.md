@@ -93,7 +93,6 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
   1. [X] TODO ExplorerView voir si peur refract utilisant viewbuilder (cf lien)
   2. [ ] TODO utiliser enum pour gérer plus clairement les etats du star button
 
-- [ ] TODO utiliser enum pour gérer plus clairement les etats du star button
 - [ ] link mon compte firefox -> sur mon windows + mac
 - [X] faire image 1000x500px logo + nom ItunesExplorer  pour le readme **-> chounky**
 1. [ ] clean la partie combine > **WIP cleaning** + Issue => on a plus la possibilité de cancel si on spam le segmented control par exemple
@@ -108,7 +107,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 	2. [X] Boutton dessus back (back) + (filtre) showCategory(doit faire apparaitre/enlever le seg control)
 	3. [X] La zone de tap gesture d'une row c'est toute la row 
 	4. [ ] rendre le bouton moicro reelement fonctionnel
-	5. [ ] changer le style de l'étoile avec SFSymbol location.north.fill
+	5. [X] changer le style de l'étoile avec SFSymbol location.north.fill
 
 - [ ] faire un *Unit Test_`ok`* + un UItest !
 
@@ -116,7 +115,7 @@ Network Kit utilisant generic + 3 methodes pour fetch (combine + closure + async
 
 ## **`@42`**
 
-  1. [ ] check si je peux chercher des solutions sur les "TO DO" en cours
+  1. [X] check si je peux chercher des solutions sur les "TO DO" en cours
     . animation verticale lors du pop / depop du segmented control
 
     ```
