@@ -72,6 +72,8 @@ struct ExplorerView: View {
 	
 	// - MARK: Private Methods
 	private func prepareProcessingExplo() {
+		guard !exploFieldInput.isEmpty else { return }
+		textFieldShouldFocus = false
 		processingExplo(input: exploFieldInput, tag: segmentedControlTag)
 	}
 	

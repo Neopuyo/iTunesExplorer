@@ -55,6 +55,7 @@ struct ListNotSearchedYetView: View {
 		}
     }
 	
+	// - TODO: build it as swiftUI shape instead of usign a png
 	@ViewBuilder
 	private var exploStarAsPngIconView: some View {
 		ZStack {

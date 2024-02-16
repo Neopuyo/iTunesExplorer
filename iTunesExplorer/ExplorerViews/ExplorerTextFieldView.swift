@@ -10,8 +10,6 @@ import SwiftUI
 
 struct ExplorerTextFieldView: View {
 	
-	@Environment(\.colorScheme) var colorScheme
-	
 	//text field
 	@Binding var textInput:String
 	@Binding var textFieldShouldFocus: Bool
@@ -53,33 +51,37 @@ struct ExplorerTextFieldView: View {
 							.padding(.trailing)
 					}
 				}
+				.padding(.bottom, 6)
 				
 				// Explo Bar text Field
 				HStack {
 					Image(systemName: "magnifyingglass")
-						.foregroundStyle(Color.whiteLock)
+						.foregroundStyle(Color.grey50.opacity(0.4))
 						.font(.body)
 						.padding(.leading)
 					TextField("Music, app, e-book...", text: $textInput)
 						.submitLabel(.search)
-						.foregroundStyle(Color.whiteLock)
 						.disableAutocorrection(true)
 						.focused($exploFieldFocused)
 						.onSubmit {
-							willSubmitInput()
+							willSubmitInput(from: .keyboard)
 						}
 					Button {
 						// TODO : set up microphoneButton action
 					} label: {
 						Image(systemName: "mic.fill")
-							.foregroundStyle(Color.whiteLock)
+							.foregroundStyle(Color.grey50.opacity(0.4))
 							.font(.body)
 							.padding(.trailing)
 					}
 				}
 				.padding(.vertical, 6)
-				.background(Color.secondary.opacity(colorScheme == .dark ? 0.30 : 0.10))
-				.cornerRadius(12.0)
+				.background(Color.whiteLock.opacity(0.10))
+				.cornerRadius(8.0)
+				.overlay(
+					RoundedRectangle(cornerRadius: 8.0)
+						.stroke(Color.whiteLock.opacity(0.20), lineWidth: 1.0)
+				)
 				.onAppear {
 					exploFieldFocused = true
 				}
@@ -110,11 +112,14 @@ struct ExplorerTextFieldView: View {
 			Text("E-book").tag(3)
 			Text("Movies").tag(4)
 		}.pickerStyle(.segmented)
+		.cornerRadius(8.0)
+		.overlay(
+			RoundedRectangle(cornerRadius: 8.0)
+				.stroke(Color.whiteLock.opacity(0.20), lineWidth: 1.0)
+		)
 		.onChange(of: segmentedControlTag) { tag in
-			willSubmitInput()
+			willSubmitInput(from: .segmentedControl)
 		}
-		
-		
 	}
 	
 	// - MARK: Private Methods
@@ -126,12 +131,26 @@ struct ExplorerTextFieldView: View {
 		}
 	}
 	
-	private func willSubmitInput() {
-		exploFieldFocused = false
-		textIsSubmit()
+	private func willSubmitInput(from source: SubmitSource) {
+		if source == .keyboard && textInput.isEmpty {
+			backAction()
+		} else {
+			textIsSubmit()
+		}
 	}
 	
+	private enum SubmitSource {
+		case keyboard, segmentedControl
+	}
 	
+}
+
+extension Shape {
+	func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(_ fillStyle: Fill, strokeBorder strokeStyle: Stroke, lineWidth: Double = 1) -> some View {
+		self
+			.stroke(strokeStyle, lineWidth: lineWidth)
+			.background(self.fill(fillStyle))
+	}
 }
 
 //#Preview {

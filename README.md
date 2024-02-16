@@ -23,7 +23,9 @@
 <table style="border: 0px;">
     <tr>
         <td >
-            <img src="./ressources/startAppicon.gif" alt="start screen" style="width: 280px;">
+        <div style="border-radius:12px; overflow:hidden;"> 
+            <img src="./ressources/gif/startAppicon2.gif" alt="start screen" style="width: 280px; height:280px;">
+            </div>
         </td>
         <td>
             <div style="margin-left: 20px; width:260px;">
@@ -80,8 +82,10 @@ Here the expected thing will be to use the **`combine`** framework to manage the
 
 <table style="border: 0px;">
     <tr>
-        <td >
-            <img src="./ressources/exploDemo.gif" alt="use demo" style="width: 280px;">
+        <td>
+        	<div style="border-radius:12px; overflow:hidden;"> 
+            <img src="./ressources/gif/exploDemo2.gif" alt="use demo" style="width: 280px;">
+           </div>
         </td>
         <td>
             <div style="margin-left: 20px; width:260px;">
@@ -132,7 +136,9 @@ final class performExploTest: XCTestCase {
             </div>
         </td>
         <td>
-            <img src="./ressources/appIcon%2BcolorScheme.gif" alt="showing light and dark mode" style="width: 280px;">
+        <div style="border-radius:12px; overflow:hidden;"> 
+            <img src="./ressources/gif/appIcon%2BcolorScheme2.gif" alt="showing light and dark mode" style="width: 280px;">
+            </div>
         </td>
     </tr>
 </table>
