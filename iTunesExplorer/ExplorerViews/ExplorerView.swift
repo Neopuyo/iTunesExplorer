@@ -59,7 +59,7 @@ struct ExplorerView: View {
 			
 			switch explo.state {
 			case .notSearchedYet:
-				ListNotSearchedYetView(starText:getStarText().description) { starIsTapped() }
+				ListNotSearchedYetView(starText:getStarState().text) { starIsTapped() }
 			case .loading:
 				ListLoadingView()
 			case .noResults:
@@ -116,19 +116,15 @@ struct ExplorerView: View {
 		exploBarOpacity = 0.0
 	}
 	
-	private enum StarText: CustomStringConvertible {
+	private enum StarState {
 		case showMenu, hideMenu, launchExplo
 		
-		var description: String {
-			switch self {
-			case .showMenu : return "Tap me !"
-			case .hideMenu : return "Back"
-			case .launchExplo : return "Explore !"
-			}
+		var text: String? {
+			return self == .showMenu ? "Tap to start" : nil
 		}
 	}
 	
-	private func getStarText() -> StarText {
+	private func getStarState() -> StarState {
 		if !displayExploBar {
 			return .showMenu
 		} else if !exploFieldInput.isEmpty {
@@ -140,8 +136,3 @@ struct ExplorerView: View {
 	
 
 }
-    
-
-//#Preview {
-//    ExplorerView()
-//}

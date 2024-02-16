@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ExplorerTextFieldView: View {
 	
+	@Environment(\.colorScheme) var colorScheme
+	
 	//text field
 	@Binding var textInput:String
 	@Binding var textFieldShouldFocus: Bool
@@ -34,21 +36,20 @@ struct ExplorerTextFieldView: View {
 				// Back & Filters Buttons
 				HStack {
 					Button {
-						
 						backAction()
 					} label: {
-						Image(systemName: "chevron.backward.circle.fill")
+						Image(systemName: "chevron.backward.circle")
 							.foregroundStyle(.accent)
-							.font(.title)
+							.font(.title2)
 							.padding(.leading)
 					}
 					Spacer()
 					Button {
 						showFiltersIsTapped()
 					} label: {
-						Image(systemName: displaySegmentedControl ? "tag.circle.fill" : "tag.circle")
-							.foregroundStyle(.accent)
-							.font(.title)
+						Image(systemName: displaySegmentedControl ? "ellipsis.circle.fill" : "ellipsis.circle")
+							.foregroundStyle(Color.whiteLock)
+							.font(.title2)
 							.padding(.trailing)
 					}
 				}
@@ -56,11 +57,12 @@ struct ExplorerTextFieldView: View {
 				// Explo Bar text Field
 				HStack {
 					Image(systemName: "magnifyingglass")
-						.foregroundStyle(.accent)
+						.foregroundStyle(Color.whiteLock)
 						.font(.body)
 						.padding(.leading)
 					TextField("Music, app, e-book...", text: $textInput)
 						.submitLabel(.search)
+						.foregroundStyle(Color.whiteLock)
 						.disableAutocorrection(true)
 						.focused($exploFieldFocused)
 						.onSubmit {
@@ -69,14 +71,14 @@ struct ExplorerTextFieldView: View {
 					Button {
 						// TODO : set up microphoneButton action
 					} label: {
-						Image(systemName: "mic.circle.fill")
-							.foregroundStyle(.accent)
-							.font(.title)
+						Image(systemName: "mic.fill")
+							.foregroundStyle(Color.whiteLock)
+							.font(.body)
 							.padding(.trailing)
 					}
 				}
 				.padding(.vertical, 6)
-				.background(Color.grey50.opacity(0.25))
+				.background(Color.secondary.opacity(colorScheme == .dark ? 0.30 : 0.10))
 				.cornerRadius(12.0)
 				.onAppear {
 					exploFieldFocused = true
@@ -89,7 +91,8 @@ struct ExplorerTextFieldView: View {
 			// Segmented control
 			if displaySegmentedControl {
 				segmentedControlView
-					.transition(.move(edge: .top))
+					.opacity(segmentedControlOpacity)
+					.transition(AnyTransition.opacity.combined(with: .move(edge: .top)))
 			}
 		}
 		
@@ -107,10 +110,10 @@ struct ExplorerTextFieldView: View {
 			Text("E-book").tag(3)
 			Text("Movies").tag(4)
 		}.pickerStyle(.segmented)
-			.onChange(of: segmentedControlTag) { tag in
-				willSubmitInput()
-			}
-			.opacity(segmentedControlOpacity)
+		.onChange(of: segmentedControlTag) { tag in
+			willSubmitInput()
+		}
+		
 		
 	}
 	
@@ -118,8 +121,8 @@ struct ExplorerTextFieldView: View {
 	private func showFiltersIsTapped() {
 		// - TODO: improve animation with a vertical move effect
 		withAnimation {
-			segmentedControlOpacity =  displaySegmentedControl ? 0.0 : 1.0
 			displaySegmentedControl.toggle()
+			segmentedControlOpacity = displaySegmentedControl ? 1.0 : 0.0
 		}
 	}
 	
