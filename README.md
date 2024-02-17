@@ -24,7 +24,7 @@
     <tr>
         <td >
         <div style="border-radius:12px; overflow:hidden;"> 
-            <img src="./ressources/gif/startAppicon2.gif" alt="start screen" style="width: 280px; height:280px;">
+            <img src="./ressources/gif/startAppicon2.gif" alt="start screen" style="width: 280px;">
             </div>
         </td>
         <td>
