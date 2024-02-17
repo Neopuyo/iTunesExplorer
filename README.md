@@ -11,6 +11,7 @@
 
 **Highlighted parts** 
 
+* [**UI UX rework**](#ui--ux-rework)
 * [**Fetching API using `URLSessionDataTask`**](#fetching-api-using-urlsessiondatatask)
 * [**Fetching API using `Combine`**](#fetching-api-using-combine)
 * [**Unit Testing in asynchronous context**](#unit-testing-in-asynchronous-context)
@@ -35,6 +36,61 @@
         </td>
     </tr>
 </table>
+
+<br/>
+
+## **UI & UX rework**
+
+Initially, I began with a set of graphical elements primarily focused on being placeholder rather than aesthetics. The following presents a series of screenshots showcasing the interface before and after the **UI & UX rework**.
+
+<table style="border: 0px;">
+    <tr style="text-align: center;">
+        <td>
+            <h3><b>before</b></h3>
+        </td>
+        <td>
+            <h3><b>after</b></h3>
+        </td>
+    </tr>
+     <tr>
+        <td>
+            <div style="border-radius:12px; overflow:hidden;"> 
+            <img src="./ressources/UIscreenshots/version1/Simulator%20Screenshot%20-%20iPhone%20SE%20(2nd%20generation)%20-%202024-02-09%20at%2014.20.39.png" alt="start screen" style="width: 280px;">
+            </div>
+        </td>
+        <td>
+            <div style="border-radius:12px; overflow:hidden;"> 
+            <img src="./ressources/UIscreenshots/version2/Simulator%20Screenshot%20-%20iPhone%20SE%20(2nd%20generation)%20-%202024-02-16%20at%2014.19.09.png" alt="start screen" style="width: 280px;">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="border-radius:12px; overflow:hidden;"> 
+            <img src="./ressources/UIscreenshots/version1/Simulator%20Screenshot%20-%20iPhone%20SE%20(2nd%20generation)%20-%202024-02-09%20at%2014.21.18.png" alt="start screen" style="width: 280px;">
+            </div>
+        </td>
+        <td>
+            <div style="border-radius:12px; overflow:hidden;"> 
+            <img src="./ressources/UIscreenshots/version2/Simulator%20Screenshot%20-%20iPhone%20SE%20(2nd%20generation)%20-%202024-02-16%20at%2014.20.51.png" alt="start screen" style="width: 280px;">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="border-radius:12px; overflow:hidden;"> 
+            <img src="./ressources/UIscreenshots/version1/Simulator%20Screenshot%20-%20iPhone%20SE%20(2nd%20generation)%20-%202024-02-09%20at%2014.22.11.png" alt="start screen" style="width: 280px;">
+            </div>
+        </td>
+        <td>
+            <div style="border-radius:12px; overflow:hidden;"> 
+            <img src="./ressources/UIscreenshots/version2/Simulator%20Screenshot%20-%20iPhone%20SE%20(2nd%20generation)%20-%202024-02-16%20at%2014.23.15.png" alt="start screen" style="width: 280px;">
+            </div>
+        </td>
+    </tr>
+
+</table>
+
 
 <br/>
 
